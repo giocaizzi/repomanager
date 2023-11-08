@@ -69,30 +69,18 @@ td a:hover {
   <h1>Repository Manager</h1>
 
   <table>
+    {% for key in repos[0].keys() %}
     <tr>
-      <th>Name</th>
+      <th>{{key}}</th>
       {% for repo in repos %}
-      <td>{{ repo.name }}</td>
+      {% if key == "url" %}
+      <td><a href="{{ repo[key] }}">{{ repo[key] }}</a></td>
+      {% else %}
+      <td>{{ repo[key] }}</td>
+      {% endif %}
       {% endfor %}
     </tr>
-    <tr>
-      <th>Description</th>
-      {% for repo in repos %}
-      <td>{{ repo.description }}</td>
-      {% endfor %}
-    </tr>
-    <tr>
-      <th>Language</th>
-      {% for repo in repos %}
-      <td>{{ repo.language }}</td>
-      {% endfor %}
-    </tr>
-    <tr>
-      <th>URL</th>
-      {% for repo in repos %}
-      <td><a href="{{ repo.url }}">{{ repo.url }}</a></td>
-      {% endfor %}
-    </tr>
+    {% endfor %}
   </table>
 
 </div>
