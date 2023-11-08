@@ -60,6 +60,8 @@ td a:hover {
 
 </style>
 </head>
+
+
 <body>
 
 <div class="container">
@@ -67,7 +69,30 @@ td a:hover {
   <h1>Repository Manager</h1>
 
   <table>
-    {table_rows}
+    <tr>
+      <th>Name</th>
+      {% for repo in repos %}
+      <td>{{ repo.name }}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th>Description</th>
+      {% for repo in repos %}
+      <td>{{ repo.description }}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th>Language</th>
+      {% for repo in repos %}
+      <td>{{ repo.language }}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th>URL</th>
+      {% for repo in repos %}
+      <td><a href="{{ repo.url }}">{{ repo.url }}</a></td>
+      {% endfor %}
+    </tr>
   </table>
 
 </div>
