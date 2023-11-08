@@ -31,7 +31,6 @@
       th {
         text-align: left;
         font-style: italic;
-        background-color: #afafaf;
       }
 
       td a {
@@ -59,13 +58,11 @@
         font-size: x-small;
       }
 
-      table table tr th {
-        background-color: #f1f1f1;
-      }
     </style>
   </head>
 
-  {% macro render_value(value) %} {% if value is mapping %}
+  {% macro render_value(value) %} 
+  {% if value is mapping %}
   <td>
     <table>
       {% for key, subvalue in value.items() %}
@@ -75,6 +72,14 @@
       </tr>
       {% endfor %}
     </table>
+  </td>
+  {% elif value is iterable and value is not string %}
+  <td>
+    <ul>
+      {% for item in value %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
   </td>
   {% else %}
   <td>{{ value }}</td>
