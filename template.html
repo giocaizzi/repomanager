@@ -8,8 +8,6 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 800px;
-  padding: 20px;
 }
 
 h1 {
@@ -61,6 +59,22 @@ td a:hover {
 </style>
 </head>
 
+{% macro render_value(value) %}
+  {% if value is mapping %}
+    <td>
+      <table>
+        {% for key, subvalue in value.items() %}
+        <tr>
+          <th>{{ key }}</th>
+          {{ render_value(subvalue) }}
+        </tr>
+        {% endfor %}
+      </table>
+    </td>
+  {% else %}
+    <td>{{ value }}</td>
+  {% endif %}
+{% endmacro %}
 
 <body>
 
@@ -76,7 +90,7 @@ td a:hover {
       {% if key == "url" %}
       <td><a href="{{ repo[key] }}">{{ repo[key] }}</a></td>
       {% else %}
-      <td>{{ repo[key] }}</td>
+      {{ render_value(repo[key]) }}
       {% endif %}
       {% endfor %}
     </tr>
