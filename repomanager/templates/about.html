@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Child Page - My Website{% endblock %}
+{% block title %}About{% endblock %}
 
 {% block header %}Welcome to the Child Page{% endblock %}
 
 {% block content %}
     <section>
-        <h2>Additional Information</h2>
-        <!-- Child-specific content goes here -->
+        <h2>Repomanager</h2>
+        <p>Repomanager is a tool to control GitHub repositories efficently.</p>
+
+        <h3>Links</h3>
+        <ul>
+            <li>For <b><em>Issues</em></b>, <b><em>Pull Requests</em></b> and the <b><em>source code</em></b> visit the <a href="https://github.com/giocaizzi/repomanager">GitHub Repository</a></li>
+        </ul>
     </section>
 {% endblock %}
