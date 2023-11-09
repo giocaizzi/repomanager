@@ -58,11 +58,20 @@
         font-size: x-small;
       }
 
+      /* style elements  */
+      .true-value::before {
+        content: "\2713"; /* Unicode character for a check mark */
+        color: green;
+      }
+
+      .false-value::before {
+        content: "\2717"; /* Unicode character for a cross mark */
+        color: red;
+      }
     </style>
   </head>
 
-  {% macro render_value(value) %} 
-  {% if value is mapping %}
+  {% macro render_value(value) %} {% if value is mapping %}
   <td>
     <table>
       {% for key, subvalue in value.items() %}
@@ -81,6 +90,10 @@
       {% endfor %}
     </ul>
   </td>
+  {% elif value is boolean %}
+  <td
+    class="{{'true-value' if value|is_true else 'false-value' if value|is_false else ''}}"
+  ></td>
   {% else %}
   <td>{{ value }}</td>
   {% endif %} {% endmacro %}
@@ -94,7 +107,9 @@
         <tr>
           <th>{{key}}</th>
           {% for repo in repos %} {% if key == "Name" %}
-          <td><a href="{{ repo['Url'] }}">{{ repo[key] }}</a></td>
+          <td>
+            <a href="{{ repo['Url'] }}">{{ repo[key] }}</a>
+          </td>
           {% else %} {{ render_value(repo[key]) }} {% endif %} {% endfor %}
         </tr>
         {% endif %} {% endfor %}
