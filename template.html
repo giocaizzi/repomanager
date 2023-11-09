@@ -71,6 +71,7 @@
     </style>
   </head>
 
+  <!-- macro -->
   {% macro render_value(value) %} {% if value is mapping %}
   <td>
     <table>
@@ -98,10 +99,10 @@
   <td>{{ value }}</td>
   {% endif %} {% endmacro %}
 
+  <!-- body -->
   <body>
     <div class="container">
       <h1>Repository Manager</h1>
-
       <table>
         {% for key in repos[0].keys() %} {% if key != "Url" %}
         <tr>
