@@ -1,6 +1,3 @@
-# output of the build
-index.html 
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
