@@ -2,10 +2,11 @@
 from github import Github, Auth, Repository
 
 
-class User:
+class GithubClient:
     def __init__(self, token: str):
         # pygithub
         self._github = Github(auth=Auth.Token(token))
+
         # basic calls to get basic info
         self._user = self._github.get_user()
         self._repos = [Repository(repo) for repo in self._user.get_repos()]
@@ -40,6 +41,12 @@ class User:
     def __repr__(self) -> str:
         return str(self)
 
+class ListOfRepos:
+    def __init__(self, repos: list):
+        self._repos = repos
+
+    def __len__(self):
+        return len(self._repos)
 
 class Repository:
     name: str = None

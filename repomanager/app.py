@@ -1,14 +1,14 @@
 from flask import Flask, render_template
 from decouple import config
 
-from .github import User
+from .github import GithubClient
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    user = User(config("GITHUB_TOKEN"))
+    user = GithubClient(config("GITHUB_TOKEN"))
     return render_template("home.html", user=user)
 
 
