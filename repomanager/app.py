@@ -2,7 +2,7 @@ from flask import Flask, render_template, session, request, redirect, url_for
 from decouple import config
 import logging
 
-from .github import GithubClient
+from .github import User
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -79,30 +79,29 @@ def _login(login_type=None, login_input=None):
     if login_type == "token":
         app.logger.info("Logging in with token")
         try:
-            return GithubClient(token=login_input)
-        except Exception:
-            raise LoginError("Login with token failed.")
-
+            return User(token=login_input)
+        except Exception as e:
+            raise LoginError("Login with token failed.", e)
     elif login_type == "username":
         app.logger.info("Logging in with username")
         raise LoginError("Only token login is currently supported.")
     else:
         app.logger.info(f"{login_type} is not a valid login type.")
-        raise ValueError(f"Unknown login type : {login_type}")
+        raise LoginError(f"Unknown login type : {login_type}")
 
 
 @app.errorhandler(Exception)
 def handle_exception(e):
-    if isinstance(e, BaseError):
-        # Known error, render with specific template
-        return render_template("error.html", error=e), 500
-    else:
-        # Generic error, render with generic template
-        return render_template("unknownerror.html", error=e), 500
+    return render_template("error.html", error=e), 500
 
 
 class BaseError(Exception):
-    pass
+    known_exception = True
+
+    def __init__(self, message, original_exception=None):
+        super().__init__(message, original_exception)
+        self.message = message
+        self.original_exception = original_exception
 
 
 class LoginError(BaseError):

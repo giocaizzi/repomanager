@@ -1,6 +1,25 @@
 {% extends 'base.html' %} {% block title %}Error!{% endblock %} {% block content
 %}
 <h1>An error occurred!</h1>
-<p>{{ error }}</p>
+<!-- known exception -->
+{% if error.known_exception is defined  %}
+<p>{{ error.message }}</p>
+<br />
+{% if error.original_exception!=None %}
+<details>
+    <summary>Click to see the error</summary>
+    <pre>{{ error.original_exception}}</pre>
+  </details>
+{% endif %}
+<!-- unknown exception -->
+{% else %}
+<p>Sorry, we encountered an internal error.</p>
+<br />
+<details>
+    <summary>Click to see the error</summary>
+    <pre>{{ error }}</pre>
+  </details>
+{% endif %}
+<br />
 <p>Go back to <a href="{{ url_for('home') }}">home</a>.</p>
 {% endblock %}

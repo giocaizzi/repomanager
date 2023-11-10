@@ -1,11 +1,11 @@
 """data models"""
-from github import Github, Auth, Repository
+import github
 
 
-class GithubClient:
+class User:
     def __init__(self, token: str):
         # pygithub
-        self._github = Github(auth=Auth.Token(token))
+        self._github = github.Github(auth=github.Auth.Token(token))
 
         # basic calls to get basic info
         self._user = self._github.get_user()
@@ -23,6 +23,7 @@ class GithubClient:
     def user(self):
         return self._user
 
+    # shortcuts to github.User properties
     @property
     def login(self):
         return self.user.login
@@ -47,21 +48,9 @@ class GithubClient:
 
 
 class Repository:
-    name: str = None
-    url: str = None
-    description: str = None
-    language: str = None
-    stars: int = None
-    issues = None
-    pull_requests = None
-    branches = None
-    forks = None
-    pages: bool = None
-    collaborators = None
-    workflows = None
-    _repo = None
+    _repo: github.Repository = None
 
-    def __init__(self, repo: Repository):
+    def __init__(self, repo: github.Repository):
         self._repo = repo
         self._set_basic_info()
 
@@ -69,16 +58,34 @@ class Repository:
     def repo(self):
         return self._repo
 
-    def _set_basic_info(
+    # shortcuts to github.Repository properties
+    @property
+    def name(self):
+        return self.repo.name
+
+    @property
+    def url(self):
+        return self.repo.html_url
+
+    @property
+    def description(self):
+        return self.repo.description
+
+    @property
+    def language(self):
+        return self.repo.language
+
+    @property
+    def stars(self):
+        return self.repo.stargazers_count
+
+    @property
+    def pages(self):
+        return self.repo.has_pages
+
+    def _get_more_info(
         self,
     ):
-        self.name = self.repo.name
-        self.url = self.repo.html_url
-        self.description = self.repo.description
-        self.language = self.repo.language
-        self.stars = self.repo.stargazers_count
-        self.pages = self.repo.has_pages
-
         # list of issues
         self.issues = self.repo.get_issues()
         # list of pull requests
