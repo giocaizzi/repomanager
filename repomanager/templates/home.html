@@ -7,5 +7,7 @@
 {% block content %}
     <section>
         <h2>{{user.login}}</h2>
+        <p>This is the repository manager of <em>{{user.name}}</em>, aka <b>{{user.login}}</b>.</p>
+        <a href="{{user.html_url}}">Visit {{user.login}} on GitHub</a>
     </section>
 {% endblock %}

@@ -1,16 +1,11 @@
 """data models"""
 from github import Github, Auth, Repository
-from IPython.display import HTML
-from jinja2 import Environment, FileSystemLoader
 
 
 class User:
     def __init__(self, token: str):
         # pygithub
         self._github = Github(auth=Auth.Token(token))
-        # jinja2 templates
-        self._jinja_env = Environment(loader=FileSystemLoader("templates"))
-
         # basic calls to get basic info
         self._user = self._github.get_user()
         self._repos = [Repository(repo) for repo in self._user.get_repos()]
@@ -26,9 +21,21 @@ class User:
     @property
     def user(self):
         return self._user
+    
+    @property
+    def login(self):
+        return self.user.login
+    
+    @property
+    def name(self):
+        return self.user.name
+    
+    @property
+    def html_url(self):
+        return self.user.html_url
 
     def __str__(self) -> str:
-        return f"RepoManager(login={self.user.login}, repos={len(self.repos)})"
+        return f"RepoManager(login={self.login}, repos={len(self.repos)})"
 
     def __repr__(self) -> str:
         return str(self)
