@@ -80,25 +80,36 @@ def _login(login_type=None, login_input=None):
         app.logger.info("Logging in with token")
         try:
             return GithubClient(token=login_input)
-        except Exception as e:
-            raise LoginError(f"Login with token failed. {e}")
+        except Exception:
+            raise LoginError("Login with token failed.")
 
     elif login_type == "username":
         app.logger.info("Logging in with username")
-        raise NotImplementedError("Only token login is currently supported.")
+        raise LoginError("Only token login is currently supported.")
     else:
         app.logger.info(f"{login_type} is not a valid login type.")
-        raise ValueError("Unknown login type.")
+        raise ValueError(f"Unknown login type : {login_type}")
 
 
 @app.errorhandler(Exception)
 def handle_exception(e):
-    # pass the error to the template
-    # returns the template with a 500 error
-    return render_template("error.html", error=e), 500
+    if isinstance(e, BaseError):
+        # Known error, render with specific template
+        return render_template("error.html", error=e), 500
+    else:
+        # Generic error, render with generic template
+        return render_template("unknownerror.html", error=e), 500
 
 
-class LoginError(Exception):
+class BaseError(Exception):
+    """Base class for exceptions in this module."""
+
+    pass
+
+
+class LoginError(BaseError):
+    """Raised when login fails."""
+
     pass
 
 

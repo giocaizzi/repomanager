@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block title %}Unknown error!{% endblock %} {% block content
+%}
+<h1>Unknown error!</h1>
+<p>{{ error }}</p>
+<p>Go back to <a href="{{ url_for('home') }}">home</a>.</p>
+{% endblock %}
