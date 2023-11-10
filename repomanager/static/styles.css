@@ -30,17 +30,27 @@
   color: black;
 }
 
+/* Style for the bottom footer section */
+.footer {
+  background-color: #b8b8b8;
+  text-align: center;
+  font-size: small;
+}
+
 /* Style for the main content section */
 .main {
   padding: 16px;
-  margin-top: 30px;
-  height: 500px; /* Used in this example to enable scrolling */
+  padding-left: 32px;
+  padding-right: 32px;
+  min-height: calc(100vh - 90px); /* Added min-height to make sure the content takes up the remaining space */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Style for the bottom footer section */
-.footer {
-  background-color: #f1f1f1;
-  padding: 1px;
-  text-align: center;
-  font-size: small;
+/* Style for the body element */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
