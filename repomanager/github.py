@@ -34,7 +34,7 @@ class GithubClient:
     @property
     def html_url(self):
         return self.user.html_url
-    
+
     @property
     def avatar_url(self):
         return self.user.avatar_url

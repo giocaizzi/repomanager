@@ -15,7 +15,8 @@ app.secret_key = config("SECRET_KEY")
 def home():
     if "login_type" in session and "login_input" in session:
         return render_template(
-            "user.html", user=_login(session["login_type"], session["login_input"])
+            "user.html",
+            user=_login(session["login_type"], session["login_input"]),
         )
     else:
         return render_template("home.html")
@@ -59,7 +60,8 @@ def user():
     if "login_type" in session and "login_input" in session:
         app.logger.info("User page requested with login")
         return render_template(
-            "user.html", user=_login(session["login_type"], session["login_input"])
+            "user.html",
+            user=_login(session["login_type"], session["login_input"]),
         )
     else:
         app.logger.info("User page requested without login")
