@@ -22,15 +22,15 @@ class GithubClient:
     @property
     def user(self):
         return self._user
-    
+
     @property
     def login(self):
         return self.user.login
-    
+
     @property
     def name(self):
         return self.user.name
-    
+
     @property
     def html_url(self):
         return self.user.html_url
@@ -41,12 +41,6 @@ class GithubClient:
     def __repr__(self) -> str:
         return str(self)
 
-class ListOfRepos:
-    def __init__(self, repos: list):
-        self._repos = repos
-
-    def __len__(self):
-        return len(self._repos)
 
 class Repository:
     name: str = None

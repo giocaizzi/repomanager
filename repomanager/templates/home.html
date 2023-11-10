@@ -7,5 +7,14 @@
     <b>{{user.login}}</b>.
   </p>
   <a href="{{user.html_url}}">Visit {{user.login}} on GitHub</a>
+  <p>
+    There are {{user.repos|length}} repositories in total.
+  </p>
+  <ul>
+    {% for repo in user.repos %}
+    <li>
+      <a href="{{repo.html_url}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
+    </li>
+    {% endfor %}
 </section>
 {% endblock %}
