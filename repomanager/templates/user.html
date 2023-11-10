@@ -10,9 +10,12 @@
   </p>
   <a href="{{user.html_url}}">Visit {{user.login}} on GitHub</a>
 
+</section>
+<section>
+  <h3>Repositories</h3>
   <!-- repositories -->
   <p>
-    There are {{user.repos|length}} repositories in total.
+    There are {{user.repos|length}} <a href="{{url_for('repos',username='{{user.login}}')}}">repositories</a> in total.
   </p>
   <ul>
     {% for repo in user.repos %}

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 from decouple import config
 import logging
+from functools import wraps
+
 
 from .github import User
 
@@ -9,6 +11,16 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.secret_key = config("SECRET_KEY")
+
+
+def redirect_to_home_missing_auth(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if "login_type" not in session or "login_input" not in session:
+            return redirect(url_for("home"))
+        return f(*args, **kwargs)
+
+    return decorated_function
 
 
 @app.route("/")
@@ -36,14 +48,14 @@ def about():
 def auth():
     app.logger.info("Login requested")
     # checking if login, otherwise raise error
-    _login(
+    user = _login(
         login_type=request.form.get("login_type"),
         login_input=request.form.get("login_input"),
     )
     # storing correct login info in session
     session["login_type"] = request.form.get("login_type")
     session["login_input"] = request.form.get("login_input")
-    return redirect(url_for("user"))
+    return redirect(url_for("user", username=user.login))
 
 
 @app.route("/logout")
@@ -55,17 +67,24 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/user")
-def user():
-    if "login_type" in session and "login_input" in session:
-        app.logger.info("User page requested with login")
-        return render_template(
-            "user.html",
-            user=_login(session["login_type"], session["login_input"]),
-        )
-    else:
-        app.logger.info("User page requested without login")
-        return redirect(url_for("home"))
+@app.route("/<username>")
+@redirect_to_home_missing_auth
+def user(username):
+    app.logger.info("User page requested with login")
+    return render_template(
+        "user.html",
+        user=_login(session["login_type"], session["login_input"]),
+    )
+
+
+@app.route("/<username>/repos")
+@redirect_to_home_missing_auth
+def repos(username):
+    app.logger.info("User repos page requested with login")
+    return render_template(
+        "repos.html",
+        user=_login(session["login_type"], session["login_input"]),
+    )
 
 
 def _login(login_type=None, login_input=None):

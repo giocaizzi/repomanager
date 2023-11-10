@@ -15,6 +15,7 @@
       <a class="home" href="/">Repomanager</a>
       {% if "login_type" in session and "login_input" in session %}
         <!-- User is logged in -->
+        <a href="{{url_for('repos',username='{{user.login}}')}}">Repositories</a>
         <a href="/logout">Logout</a>
       {% else %}
         <!-- User is not logged in -->
