@@ -52,7 +52,6 @@ class Repository:
 
     def __init__(self, repo: github.Repository):
         self._repo = repo
-        self._set_basic_info()
 
     @property
     def repo(self):
