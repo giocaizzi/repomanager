@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %}Log in{% endblock %} {% block content
+%}
+<section>
+  <h2>Log in with GitHub</h2>
+  <p>Select how you want to log in:</p>
+  <form method="POST" action="{{ url_for('auth') }}">
+    <!-- login type -->
+    <!-- token radio button-->
+    <!-- same name so to select either one or the other -->
+    <input type="radio" id="token" name="login_type" value="token" checked>
+    <label for="token">Personal Access Token</label><br>
+    <!-- username radio button -->
+    <input type="radio" id="username" name="login_type" value="username">
+    <label for="username">Username and Password</label><br><br>
+    <!-- login input-->
+    <label for="login_input">Enter your login information:</label><br>
+    <br>
+    <input type="text" id="login_input" name="login_input" placeholder="token or username">
+    <input type="submit" value="Login">
+  </form>
+</section>
+{% endblock %}
