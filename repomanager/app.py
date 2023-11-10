@@ -14,7 +14,9 @@ app.secret_key = config("SECRET_KEY")
 @app.route("/")
 def home():
     if "login_type" in session and "login_input" in session:
-        return render_template("user.html", user=_login())
+        return render_template(
+            "user.html", user=_login(session["login_type"], session["login_input"])
+        )
     else:
         return render_template("home.html")
 
@@ -31,10 +33,15 @@ def about():
 
 @app.route("/auth", methods=["POST"])
 def auth():
+    app.logger.info("Login requested")
+    # checking if login, otherwise raise error
+    _login(
+        login_type=request.form.get("login_type"),
+        login_input=request.form.get("login_input"),
+    )
+    # storing correct login info in session
     session["login_type"] = request.form.get("login_type")
     session["login_input"] = request.form.get("login_input")
-    app.logger.info("Login requested")
-    _login()
     return redirect(url_for("user"))
 
 
@@ -51,13 +58,15 @@ def logout():
 def user():
     if "login_type" in session and "login_input" in session:
         app.logger.info("User page requested with login")
-        return render_template("user.html", user=_login())
+        return render_template(
+            "user.html", user=_login(session["login_type"], session["login_input"])
+        )
     else:
         app.logger.info("User page requested without login")
         return redirect(url_for("home"))
 
 
-def _login():
+def _login(login_type=None, login_input=None):
     """Returns a GithubClient object based on the login type and input.
 
     Raises:
@@ -65,17 +74,18 @@ def _login():
         ValueError: If the login type is not recognized.
         NotImplementedError: If the login type is not implemented.
     """
-    if session.get("login_type") == "token":
+    if login_type == "token":
         app.logger.info("Logging in with token")
         try:
-            return GithubClient(token=session.get("login_input"))
+            return GithubClient(token=login_input)
         except Exception as e:
-            raise LoginError("Failed to login with token") from e
+            raise LoginError(f"Login with token failed. {e}")
 
-    elif session.get("login_type") == "username":
+    elif login_type == "username":
         app.logger.info("Logging in with username")
         raise NotImplementedError("Only token login is currently supported.")
     else:
+        app.logger.info(f"{login_type} is not a valid login type.")
         raise ValueError("Unknown login type.")
 
 
