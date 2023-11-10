@@ -102,14 +102,10 @@ def handle_exception(e):
 
 
 class BaseError(Exception):
-    """Base class for exceptions in this module."""
-
     pass
 
 
 class LoginError(BaseError):
-    """Raised when login fails."""
-
     pass
 
 
