@@ -1,19 +1,23 @@
 {% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content
 %}
 <section>
+  <!-- avatar image and basic info -->
+  <img src="{{user.avatar_url}}" alt="{{user.login}}'s avatar" height="100"/>
   <h2>{{user.login}}</h2>
   <p>
     This is the repository manager of <em>{{user.name}}</em>, aka
     <b>{{user.login}}</b>.
   </p>
   <a href="{{user.html_url}}">Visit {{user.login}} on GitHub</a>
+
+  <!-- repositories -->
   <p>
     There are {{user.repos|length}} repositories in total.
   </p>
   <ul>
     {% for repo in user.repos %}
     <li>
-      <a href="{{repo.html_url}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
+      <a href="{{repo.url}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
     </li>
     {% endfor %}
 </section>

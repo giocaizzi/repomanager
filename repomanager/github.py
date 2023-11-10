@@ -34,9 +34,13 @@ class GithubClient:
     @property
     def html_url(self):
         return self.user.html_url
+    
+    @property
+    def avatar_url(self):
+        return self.user.avatar_url
 
     def __str__(self) -> str:
-        return f"RepoManager(login={self.login}, repos={len(self.repos)})"
+        return f"GithubClient(login={self.login}, repos={len(self.repos)})"
 
     def __repr__(self) -> str:
         return str(self)
