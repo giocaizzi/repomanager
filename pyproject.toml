@@ -35,6 +35,6 @@ sample = "sample:main"
 [tool.black]
 line-length = 79
 
-### SETUPTOOLS FIND
-[tool.setuptools.packages.find]
-where = ["repomanager"]  
+### SETUPTOOLS
+[tool.setuptools]
+packages = ["repomanager"]
