@@ -1,4 +1,36 @@
-{% extends 'base.html' %} {% block title %}Repositories{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% block title %}Repositories{% endblock %}
+{% block extra_css %}
+<style>
+    /* tables */
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+
+    }
+
+    td {
+        border: 1px solid #b2b2b2;
+        /* Adjust the border width and color as needed */
+    }
+
+    th {
+        padding: 10px;
+    }
+
+    td.description {
+        max-width: 300px;
+        /* Adjust this value as needed */
+        word-wrap: break-word;
+    }
+
+    td.centered {
+        text-align: center;
+    }
+</style>
+{% endblock %}
+{% block content %}
 <section>
     <h2>Repositories</h2>
     <p> This are the user repositories.</p>
@@ -19,9 +51,8 @@
             <tr>
                 <!-- go to repo -->
                 <td><a href="{{url_for('repo',username=repo.username,repo_name=repo.name)}}">
-                    <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="Go to repo"
-                        height="20">
-                </a></td>
+                        <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="Go to repo" height="20">
+                    </a></td>
                 <!-- name with url -->
                 <td><a href="{{repo.url}}">{{repo.name}}</a></td>
                 <!-- description -->
@@ -32,7 +63,7 @@
                         height="20"></td>
                 {% else %}
                 <td class="centered"><img src="{{ url_for('static', filename='img/public.png') }}" alt="Public"
-                         height="20"></td>
+                        height="20"></td>
                 {% endif %}
                 <!-- language -->
                 {% if repo.language|is_none %}

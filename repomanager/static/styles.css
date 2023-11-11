@@ -1,5 +1,8 @@
+/* BASE.HTML STYLES */
+
 /* Style for the top navigation bar */
-.topnav, .footer {
+.topnav,
+.footer {
   overflow: hidden;
   background-color: #000000;
   display: flex;
@@ -10,13 +13,14 @@
 
 }
 
-.topnav{
+.topnav {
   background-color: #000000;
   flex-wrap: wrap;
   flex-direction: row;
   align-content: center;
 }
-.footer{
+
+.footer {
   background-color: rgb(190, 190, 190);
   justify-content: center;
   align-items: center;
@@ -39,8 +43,6 @@
 .topnav_right {
   margin-left: auto;
 }
-
-
 
 /* Style for the main content section */
 .main {
@@ -69,72 +71,3 @@ body {
   min-height: 100vh;
   align-items: center;
 }
-
-/* tables */
-table{
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-
-}
-
-td {
-  border: 1px solid #b2b2b2; /* Adjust the border width and color as needed */
-}
-
-th {
-  padding: 10px;
-}
-
-td.description {
-  max-width: 300px; /* Adjust this value as needed */
-  word-wrap: break-word;
-}
-
-td.centered {
-  text-align: center;
-}
-
-.overview {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.login {
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  width: fit-content;
-  margin: auto;
-  border: 1px solid #b2b2b2;
-}
-
-.login h2{
-  margin: 0px;
-}
-
-.login form{
-  padding: 10px;
-}
-
-.avatar{
-  display: flex;
-}
-
-.userinfo {
-  display: flex;
-  padding-left: 20px;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-
-.userinfo h2{
-  margin: 0;
-}
-
