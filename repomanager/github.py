@@ -135,7 +135,11 @@ class Repository(IterableProrprieties):
     @property
     def private(self):
         return self._repo.private
-
+    
+    @property
+    def fork(self):
+        return self._repo.fork
+    
     # custom methods
     def _get_more_info(
         self,

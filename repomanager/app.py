@@ -11,6 +11,8 @@ import logging
 from functools import wraps
 import traceback
 import sys
+import os
+from dotenv import load_dotenv
 
 
 from .github import User, _login
@@ -19,6 +21,8 @@ from .github import User, _login
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
+load_dotenv()
+app.secret_key = os.environ["SECRET_KEY"]
 
 
 @app.template_filter("is_none")
