@@ -3,6 +3,9 @@
   overflow: hidden;
   background-color: #000000;
   display: flex;
+  height: 30px;
+  box-sizing: border-box;
+  align-items: center;
 }
 
 /* Style for the links in the top navigation bar */
@@ -13,13 +16,13 @@
   font-size: medium;
 }
 
-.topnav_right {
-  margin-left: auto;
-}
-
 .topnav a.home {
   font-weight: bold;
   font-size: large;
+}
+
+.topnav_right {
+  margin-left: auto;
 }
 
 /* Style for the bottom footer section */
