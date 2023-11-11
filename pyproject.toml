@@ -1,2 +1,41 @@
+### PROJECT
+[project]
+name = "repomanager"
+version = "0.0.1"
+description = "Manage GitHub repositories efficiently"
+readme = "README.md"
+requires-python = ">=3.7"
+license = { file = "LICENSE.txt" }
+keywords = ["flask", "github"]
+authors = [{ name = "Giorgio Caizzi", email = "giocaizzi@gmail.com" }]
+maintainers = [{ name = "Giorgio Caizzi", email = "giocaizzi@gmail.com" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = ["flask"]
+
+### OPTIONAL DEPENDENCIES
+[project.optional-dependencies]
+dev = []
+test = []
+
+### URLS
+[project.urls]
+"Homepage" = "https://github.com/giocaizzi/repomanager/"
+"Bug Reports" = "https://github.com/giocaizzi/repomanager/issues/"
+"Source" = "https://github.com/giocaizzi/repomanager/"
+
+### SCRIPTS
+[project.scripts]
+sample = "sample:main"
+
+### BLACK
 [tool.black]
 line-length = 79
