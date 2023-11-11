@@ -12,17 +12,24 @@
 
   <body>
     <div class="topnav">
-      <a class="home" href="/">Repomanager</a>
-      {% if "login_type" in session and "login_input" in session %}
+      <div class="topnav_left">
+        <a class="home" href="/">Repomanager</a>
+        {% if "login_type" in session and "login_input" in session %}
         <!-- User is logged in -->
-        <a href="{{url_for('repos',username='{{user.login}}')}}">Repositories</a>
+        <a href="{{url_for('repos',username='{{user.login}}')}}"
+          >Repositories</a
+        >
+        {% endif %}
+      </div>
+      <div class="topnav_right">
+        {% if "login_type" in session and "login_input" in session %}
         <a href="/logout">Logout</a>
-      {% else %}
+        {% else %}
         <!-- User is not logged in -->
         <a href="/login">Login</a>
-      {% endif %}
-      <a href="/about">About</a>
-      
+        {% endif %}
+        <a href="/about">About</a>
+      </div>
     </div>
 
     <div class="main">{% block content %}{% endblock %}</div>
