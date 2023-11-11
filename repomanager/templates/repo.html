@@ -10,8 +10,11 @@
         {% if key|is_different('name') and key|is_different('description') %}
         <tr>
             <th>{{ key }}</th>
+            {% if key == 'stars' %}
+             <td>{{ stars_div(value) }}</td>
+            {% else %}
             <td>{{ value|icon(key) }}</td>
-
+            {% endif %}
         </tr>
         {% endif %}
         {% endfor %}

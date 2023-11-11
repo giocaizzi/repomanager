@@ -48,7 +48,7 @@ class Icon:
     @property
     def div(self):
         if self.unicode:
-            return Markup("<unicode>&#" + self._str + ";</unicode>")
+            return Markup("<div class='unicode'>&#" + self._str + ";</div>")
         else:
             return Markup(
                 '<img class="icon" src="' + self._str + '" alt="">'

@@ -12,7 +12,6 @@
 
     td {
         border: 1px solid #b2b2b2;
-        /* Adjust the border width and color as needed */
     }
 
     th {
@@ -28,6 +27,11 @@
     td.centered {
         text-align: center;
     }
+
+    td .stars {
+        justify-content: center;
+    }
+
 </style>
 {% endblock %}
 {% block content %}
@@ -55,7 +59,7 @@
                     <a href="{{repo.url}}">
                         <img class="icon" src="/static/img/github.png" alt="Github" height="20">
                     </a>
-                <!-- name with url -->
+                    <!-- name with url -->
                 <td><a href="{{url_for('repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</td>
                 <!-- description -->
                 <td class="description">{{repo.description|d('',true)}}</td>
@@ -75,8 +79,8 @@
                 {% if repo.stars==0 %}
                 <td class="centered"></td>
                 {% else %}
-                <td class="centered">{{repo.stars}}
-                    <img class="icon" src="/static/img/star.png" alt="Star" height="20">
+                <td class="centered">
+                    {{stars_div(repo.stars)}}
                 </td>
                 {% endif %}
                 <!-- pages -->

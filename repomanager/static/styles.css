@@ -77,3 +77,10 @@ body {
 img.icon {
   height: 20px;
 }
+
+/* stars div*/
+.stars {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

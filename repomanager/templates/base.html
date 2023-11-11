@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- HEAD -->
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +13,17 @@
   <!-- additional css -->
   {% block extra_css %}{% endblock %}
 </head>
+
+<!-- MACRO -->
+
+{% macro stars_div(stars) %}
+<div class="stars">
+  {{stars}}&nbsp;<img class="icon" src="/static/img/star.png" alt="Star" height="20">
+</div>
+{% endmacro %}
+
+
+<!-- BODY -->
 
 <body>
   <div class="topnav">
