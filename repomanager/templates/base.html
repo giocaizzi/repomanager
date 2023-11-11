@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Repomanager{% endblock %}</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
-  </head>
 
-  <body>
-    <div class="topnav">
-      <div class="topnav_left">
-        <a class="home" href="/">Repomanager</a>
-        {% if "login_type" in session and "login_input" in session %}
-        <!-- User is logged in -->
-        <a href="{{url_for('repos',username='{{user.login}}')}}"
-          >Repositories</a
-        >
-        {% endif %}
-      </div>
-      <div class="topnav_right">
-        {% if "login_type" in session and "login_input" in session %}
-        <a href="/logout">Logout</a>
-        {% else %}
-        <!-- User is not logged in -->
-        <a href="/login">Login</a>
-        {% endif %}
-        <a href="/about">About</a>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- title -->
+  <title>{% block title %}Repomanager{% endblock %}</title>
+  <!-- import css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <!-- additional css -->
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+  <div class="topnav">
+    <div class="topnav_left">
+      <a class="home" href="/">Repomanager</a>
+      {% if "login_type" in session and "login_input" in session %}
+      <!-- User is logged in -->
+      <a href="{{url_for('repos',username='{{user.login}}')}}">Repositories</a>
+      {% endif %}
     </div>
-
-    <div class="main">{% block content %}{% endblock %}</div>
-
-    <div class="footer">
-      <p>2023, Giorgio Caizzi</p>
+    <div class="topnav_right">
+      {% if "login_type" in session and "login_input" in session %}
+      <a href="/logout">Logout</a>
+      {% else %}
+      <!-- User is not logged in -->
+      <a href="/login">Login</a>
+      {% endif %}
+      <a href="/about">About</a>
     </div>
-  </body>
+  </div>
+
+  <div class="main">{% block content %}{% endblock %}</div>
+
+  <div class="footer">
+    <p>2023, Giorgio Caizzi</p>
+  </div>
+</body>
+
 </html>

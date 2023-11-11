@@ -57,6 +57,10 @@
   align-items: flex-start;
 }
 
+.main.centered {
+  align-items: center;
+}
+
 /* Style for the body element */
 body {
   margin: 0;
@@ -99,15 +103,23 @@ td.centered {
 
 .login {
   display: flex;
-  padding-left: 20px;
+  padding: 20px;
   justify-content: center;
   flex-direction: column;
   align-content: center;
   align-items: center;
   width: fit-content;
   margin: auto;
+  border: 1px solid #b2b2b2;
 }
 
+.login h2{
+  margin: 0px;
+}
+
+.login form{
+  padding: 10px;
+}
 
 .avatar{
   display: flex;
