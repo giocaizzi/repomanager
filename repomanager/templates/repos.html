@@ -44,6 +44,7 @@
                 <th>Private</th>
                 <th>Language</th>
                 <th>Stars</th>
+                <th>Pages</th>
             </tr>
         </thead>
         <tbody>
@@ -79,6 +80,8 @@
                 <td class="centered">{{repo.stars}}<img src="{{ url_for('static', filename='img/star.png') }}"
                         alt="Star" height="20"></td>
                 {% endif %}
+                <!-- pages -->
+                <td class="centered">{{repo.pages}}</a></td>
             </tr>
             {% endfor %}
         </tbody>
