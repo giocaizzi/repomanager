@@ -12,6 +12,10 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 app.secret_key = config("SECRET_KEY")
 
+@app.template_filter('is_none')
+def is_none_filter(value):
+    return value is None
+
 
 def redirect_to_home_missing_auth(f):
     @wraps(f)
