@@ -1,4 +1,12 @@
-from flask import Flask, render_template, session, request, redirect, url_for,Markup
+from flask import (
+    Flask,
+    render_template,
+    session,
+    request,
+    redirect,
+    url_for,
+    Markup,
+)
 from decouple import config
 import logging
 from functools import wraps
@@ -25,40 +33,66 @@ def is_different_filter(value1, value2):
     return value1 != value2
 
 
+class Icon:
+    _unicode = False
+    _str = None
+
+    def __init__(self, str, unicode: bool = False):
+        self._str = str
+        self._unicode = unicode
+
+    @property
+    def unicode(self):
+        return self._unicode
+
+    @property
+    def div(self):
+        if self.unicode:
+            return Markup("<unicode>&#" + self._str + ";</unicode>")
+        else:
+            return Markup(
+                '<img class="icon" src="' + self._str + '" alt="">'
+            )
+
+
 ICONS = {
     "defaults": {
-        True: "9989",  # unicode checkmark
-        False: "10060",  # unicode cross
+        True: Icon("9989", True),  # unicode checkmark
+        False: Icon("10060", True),  # unicode cross
     },
     "language": {
-        "Python": "/static/img/python.png",
-        "JavaScript": "/static/img/javascript.png",
-        "Jupyter Notebook": "/static/img/jupyter_notebook.png",
+        "Python": Icon("/static/img/python.png"),
+        "JavaScript": Icon("/static/img/javascript.png"),
+        "Jupyter Notebook": Icon("/static/img/jupyter_notebook.png"),
     },
     "private": {
-        True: "/static/img/private.png",
-        False: "/static/img/public.png",
+        True: Icon("/static/img/private.png"),
+        False: Icon("/static/img/public.png"),
     },
 }
 
 
 @app.template_filter("icon")
-def icon_filter(value, family=None):
-    if family is None:
-        family = "defaults"
-    if value in ICONS[family]:
-        if family!="defaults":
-            return Markup(
-                '<img class="icon" src="'
-                + ICONS[family][value]
-                + '" alt="'
-                + str(value)
-                + '">'
-            )
+def icon_filter(value, collection=None):
+    # if group is not passed
+    if collection is None:
+        # check defaults in
+        if value in ICONS["defaults"]:
+            return ICONS["defaults"][value].div
         else:
-            return Markup('<unicode>&#'+ICONS[family][value] + ';</unicode>')
+            return value
     else:
-        return value
+        if collection in ICONS:
+            if value in ICONS[collection]:
+                return ICONS[collection][value].div
+            else:
+                return value
+        else:
+            #check if there is an icon in defaults
+            if value in ICONS["defaults"]:
+                return ICONS["defaults"][value].div
+            else:
+                return value
 
 
 def redirect_to_home_missing_auth(f):
