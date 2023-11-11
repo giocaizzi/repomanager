@@ -1,5 +1,14 @@
 /* BASE.HTML STYLES */
 
+/* Style for the body element */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  font-family: Arial;
+}
 /* Style for the top navigation bar */
 .topnav,
 .footer {
@@ -63,11 +72,8 @@
   align-items: center;
 }
 
-/* Style for the body element */
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
+/* images that are icons */
+
+img.icon {
+  height: 20px;
 }

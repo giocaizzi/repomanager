@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect, url_for
+from flask import Flask, render_template, session, request, redirect, url_for,Markup
 from decouple import config
 import logging
 from functools import wraps
@@ -19,14 +19,46 @@ app.secret_key = config("SECRET_KEY")
 def is_none_filter(value):
     return value is None
 
+
 @app.template_filter("is_different")
 def is_different_filter(value1, value2):
     return value1 != value2
 
 
-@app.template_filter('icon_mapper')
-def icon_mapper_filter(value, mappings):
-    return mappings.get(value, '')
+ICONS = {
+    "defaults": {
+        True: "9989",  # unicode checkmark
+        False: "10060",  # unicode cross
+    },
+    "language": {
+        "Python": "/static/img/python.png",
+        "JavaScript": "/static/img/javascript.png",
+        "Jupyter Notebook": "/static/img/jupyter_notebook.png",
+    },
+    "private": {
+        True: "/static/img/private.png",
+        False: "/static/img/public.png",
+    },
+}
+
+
+@app.template_filter("icon")
+def icon_filter(value, family=None):
+    if family is None:
+        family = "defaults"
+    if value in ICONS[family]:
+        if family!="defaults":
+            return Markup(
+                '<img class="icon" src="'
+                + ICONS[family][value]
+                + '" alt="'
+                + str(value)
+                + '">'
+            )
+        else:
+            return Markup('<unicode>&#'+ICONS[family][value] + ';</unicode>')
+    else:
+        return value
 
 
 def redirect_to_home_missing_auth(f):
