@@ -19,6 +19,10 @@ app.secret_key = config("SECRET_KEY")
 def is_none_filter(value):
     return value is None
 
+@app.template_filter("is_different")
+def is_different_filter(value1, value2):
+    return value1 != value2
+
 
 def redirect_to_home_missing_auth(f):
     @wraps(f)
