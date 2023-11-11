@@ -6,6 +6,9 @@
   height: 30px;
   box-sizing: border-box;
   align-items: center;
+  position: fixed;
+  top:0;
+  width : 100%;
 }
 
 /* Style for the links in the top navigation bar */
