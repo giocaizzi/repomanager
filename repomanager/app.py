@@ -15,16 +15,18 @@ import os
 from dotenv import load_dotenv
 
 
-from .github import User, _login
+from .github.user import _login
 
-
+# logging
 logging.basicConfig(level=logging.DEBUG)
 
+# Flask app
 app = Flask(__name__)
 load_dotenv()
 app.secret_key = os.environ["SECRET_KEY"]
 
 
+# app filters
 @app.template_filter("is_none")
 def is_none_filter(value):
     return value is None
@@ -74,25 +76,30 @@ ICONS = {
 
 @app.template_filter("icon")
 def icon_filter(value, collection=None):
-    # if group is not passed
-    if collection is None:
-        # check defaults in
-        if value in ICONS["defaults"]:
-            return ICONS["defaults"][value].div
-        else:
-            return value
+    # if value is iterable (list or dict)
+    # return value
+    if isinstance(value, list) or isinstance(value, dict):
+        return value
     else:
-        if collection in ICONS:
-            if value in ICONS[collection]:
-                return ICONS[collection][value].div
-            else:
-                return value
-        else:
-            # check if there is an icon in defaults
+        # if group is not passed
+        if collection is None:
+            # check defaults in
             if value in ICONS["defaults"]:
                 return ICONS["defaults"][value].div
             else:
                 return value
+        else:
+            if collection in ICONS:
+                if value in ICONS[collection]:
+                    return ICONS[collection][value].div
+                else:
+                    return value
+            else:
+                # check if there is an icon in defaults
+                if value in ICONS["defaults"]:
+                    return ICONS["defaults"][value].div
+                else:
+                    return value
 
 
 def redirect_to_home_missing_auth(f):
