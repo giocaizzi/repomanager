@@ -1,16 +1,27 @@
 /* Style for the top navigation bar */
-.topnav {
+.topnav, .footer {
   overflow: hidden;
   background-color: #000000;
   display: flex;
   height: 40px;
-  box-sizing: border-box;
-  align-items: center;
   position: relative;
-  top:0;
-  width : 100%;
-  /* border : 2px solid #ff00d0; */
+  width: 100%;
+  /* border: 2px solid #ff00d0; */
+
 }
+
+.topnav{
+  background-color: #000000;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+}
+.footer{
+  background-color: rgb(190, 190, 190);
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* Style for the links in the top navigation bar */
 .topnav a {
@@ -29,26 +40,21 @@
   margin-left: auto;
 }
 
-/* Style for the bottom footer section */
-.footer {
-  position: relative;
-  background-color: #b8b8b8;
-  text-align: center;
-  font-size: small;
-}
+
 
 /* Style for the main content section */
 .main {
-  position:relative;
-  padding-top: 8px;
+  width: 80%;
+  position: relative;
+  padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 32px;
   padding-right: 32px;
   min-height: calc(100vh - 90px);
-  /* Added min-height to make sure the content takes up the remaining space */
   display: flex;
   flex-direction: column;
-  /* border : 2px solid #40ff00; */
+  /* border: 2px solid #40ff00; */
+  align-items: flex-start;
 }
 
 /* Style for the body element */
@@ -57,6 +63,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  align-items: center;
 }
 
 /* tables */
@@ -87,9 +94,20 @@ td.centered {
 .overview {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
+
+.login {
+  display: flex;
+  padding-left: 20px;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+}
+
 
 .avatar{
   display: flex;
@@ -107,3 +125,4 @@ td.centered {
 .userinfo h2{
   margin: 0;
 }
+
