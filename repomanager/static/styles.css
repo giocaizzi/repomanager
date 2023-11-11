@@ -87,12 +87,21 @@ td.centered {
 .overview {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.userinfo{
-  padding-left: 10px;
+.avatar{
+  display: flex;
+}
+
+.userinfo {
+  display: flex;
+  padding-left: 20px;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
 }
 
 .userinfo h2{
