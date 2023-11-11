@@ -24,6 +24,11 @@ def is_different_filter(value1, value2):
     return value1 != value2
 
 
+@app.template_filter('icon_mapper')
+def icon_mapper_filter(value, mappings):
+    return mappings.get(value, '')
+
+
 def redirect_to_home_missing_auth(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):

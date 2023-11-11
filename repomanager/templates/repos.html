@@ -59,19 +59,24 @@
                 <!-- description -->
                 <td class="description">{{repo.description|d('',true)}}</td>
                 <!-- privacy -->
-                {% if repo.private %}
-                <td class="centered"><img src="{{ url_for('static', filename='img/private.png') }}" alt="Private"
-                        height="20"></td>
-                {% else %}
-                <td class="centered"><img src="{{ url_for('static', filename='img/public.png') }}" alt="Public"
-                        height="20"></td>
-                {% endif %}
+                <td class="centered">
+                    {{ repo.private | icon_mapper({
+                        True: '<img src="/static/img/private.png" alt="Private" height="20">', 
+                        False: '<img src="/static/img/public.png" alt="Public" height="20">'
+                    }) | safe }}
+                </td>
                 <!-- language -->
                 {% if repo.language|is_none %}
                 <td class="centered"></td>
                 {% else %}
-                <td class="centered"><img src="{{ url_for('static', filename='img/'+repo.language + '.png') }}"
-                        alt="{{ repo.language }}" height="20"></td>
+                <td class="centered">
+                    {{repo.language | icon_mapper({
+                        "Python": "<img src='/static/img/python.png' alt='Python' height='20'>",
+                        "JavaScript": "<img src='/static/img/JavaScript.png' alt='JavaScript' height='20'>",
+                        "Jupyter Notebook": "<img src='/static/img/Jupyter Notebook.png' alt='Jupyter Notebook' height='20'>",
+                        "Tex": "<img src='/static/img/Tex.png' alt='Tex' height='20'>",
+                    })| safe }}
+                </td>
                 {% endif %}
                 <!-- stars -->
                 {% if repo.stars==0 %}
