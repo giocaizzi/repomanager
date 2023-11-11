@@ -5,9 +5,8 @@ from flask import (
     request,
     redirect,
     url_for,
-    Markup,
 )
-from decouple import config
+from markupsafe import Markup
 import logging
 from functools import wraps
 import traceback
@@ -20,7 +19,6 @@ from .github import User, _login
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
-app.secret_key = config("SECRET_KEY")
 
 
 @app.template_filter("is_none")
@@ -50,9 +48,7 @@ class Icon:
         if self.unicode:
             return Markup("<div class='unicode'>&#" + self._str + ";</div>")
         else:
-            return Markup(
-                '<img class="icon" src="' + self._str + '" alt="">'
-            )
+            return Markup('<img class="icon" src="' + self._str + '" alt="">')
 
 
 ICONS = {
@@ -88,7 +84,7 @@ def icon_filter(value, collection=None):
             else:
                 return value
         else:
-            #check if there is an icon in defaults
+            # check if there is an icon in defaults
             if value in ICONS["defaults"]:
                 return ICONS["defaults"][value].div
             else:
