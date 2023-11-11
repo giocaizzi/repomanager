@@ -25,7 +25,7 @@
                 <!-- name with url -->
                 <td><a href="{{repo.url}}">{{repo.name}}</a></td>
                 <!-- description -->
-                <td>{{repo.description|d('',true)}}</td>
+                <td class="description">{{repo.description|d('',true)}}</td>
                 <!-- privacy -->
                 {% if repo.private %}
                 <td class="centered"><img src="{{ url_for('static', filename='img/private.png') }}" alt="Private"
