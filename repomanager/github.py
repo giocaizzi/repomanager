@@ -2,6 +2,38 @@
 import github
 
 
+def _login(login_type=None, login_input=None):
+    """Returns a GithubClient object based on the login type and input.
+
+    Raises:
+        LoginError: If the login fails.
+        ValueError: If the login type is not recognized.
+        NotImplementedError: If the login type is not implemented.
+    """
+    if login_type == "token":
+        try:
+            return User(token=login_input)
+        except Exception as e:
+            raise LoginError("Login with token failed.", e)
+    elif login_type == "username":
+        raise LoginError("Only token login is currently supported.")
+    else:
+        raise LoginError(f"Unknown login type : {login_type}")
+
+
+class BaseError(Exception):
+    known_exception = True
+
+    def __init__(self, message, original_exception=None):
+        super().__init__(message, original_exception)
+        self.message = message
+        self.original_exception = original_exception
+
+
+class LoginError(BaseError):
+    pass
+
+
 class User:
     def __init__(self, token: str):
         self._github = github.Github(auth=github.Auth.Token(token))
@@ -58,6 +90,10 @@ class Repository:
 
     def __init__(self, repo: github.Repository):
         self._repo = repo
+
+    @property
+    def username(self):
+        return self.repo.owner.login
 
     # original repo object
     @property

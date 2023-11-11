@@ -22,7 +22,7 @@
                 <td class="centered">{{repo.private}}</td>
                 <td class="centered">{{repo.language}}</td>
                 <td class="centered">{{repo.stars}}</td>
-                <td class=><a href="{{url_for('repo',repo_name=repo.name,username=session.username)}}"> Go.</a></td>
+                <td><a href="{{url_for('repo',username=repo.username,repo_name=repo.name)}}"> Go.</a></td>
             </tr>
             {% endfor %}
         </tbody>
