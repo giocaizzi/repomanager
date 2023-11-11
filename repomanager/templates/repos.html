@@ -1,8 +1,27 @@
-{% extends 'base.html' %} {% block title %}Repositories{% endblock %} {% block content
-%}
+{% extends 'base.html' %} {% block title %}Repositories{% endblock %} {% block content %}
 <section>
     <h2>Repositories</h2>
-    <p>All repositories availables.</p>
+    <p> This are the user repositories.</p>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Language</th>
+                <th>Stars</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for repo in repos %}
+            <tr>
+                <td><a href="{{repo.url}}">{{repo.name}}</a></td>
+                <td>{{repo.description|d('',true)}}</td>
+                <td class="centered">{{repo.language}}</td>
+                <td class="centered">{{repo.stars}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </section>
-
 {% endblock %}

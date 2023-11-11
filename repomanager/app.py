@@ -83,7 +83,7 @@ def repos(username):
     app.logger.info("User repos page requested with login")
     return render_template(
         "repos.html",
-        user=_login(session["login_type"], session["login_input"]),
+        repos=_login(session["login_type"], session["login_input"]).repos,
     )
 
 
