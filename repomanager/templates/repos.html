@@ -50,12 +50,13 @@
         <tbody>
             {% for repo in repos %}
             <tr>
-                <!-- go to repo -->
-                <td><a href="{{url_for('repo',username=user.login,repo_name=repo.name)}}">
-                        <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="Go to repo" height="20">
-                    </a></td>
+                <!-- github link -->
+                <td class="centered">
+                    <a href="{{repo.url}}">
+                        <img class="icon" src="/static/img/github.png" alt="Github" height="20">
+                    </a>
                 <!-- name with url -->
-                <td><a href="{{repo.url}}">{{repo.name}}</a></td>
+                <td><a href="{{url_for('repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</td>
                 <!-- description -->
                 <td class="description">{{repo.description|d('',true)}}</td>
                 <!-- privacy -->
@@ -75,7 +76,8 @@
                 <td class="centered"></td>
                 {% else %}
                 <td class="centered">{{repo.stars}}
-                <img class="icon"src="/static/img/star.png" alt="Star" height="20"></td>
+                    <img class="icon" src="/static/img/star.png" alt="Star" height="20">
+                </td>
                 {% endif %}
                 <!-- pages -->
                 <td class="centered">{{repo.pages|icon}}</a></td>
