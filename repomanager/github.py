@@ -24,11 +24,6 @@ def _login(login_type=None, login_input=None):
 class BaseError(Exception):
     known_exception = True
 
-    def __init__(self, message, original_exception=None):
-        super().__init__(message, original_exception)
-        self.message = message
-        self.original_exception = original_exception
-
 
 class LoginError(BaseError):
     pass
@@ -88,6 +83,12 @@ class User(GitHubAPI):
 
     def __repr__(self) -> str:
         return str(self)
+
+
+# class IterableClass:
+#     def __iter__(self):
+#         for attr, value in vars(self):
+#             yield attr, value
 
 
 class Repository:

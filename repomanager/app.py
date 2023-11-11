@@ -2,6 +2,8 @@ from flask import Flask, render_template, session, request, redirect, url_for
 from decouple import config
 import logging
 from functools import wraps
+import traceback
+import sys
 
 
 from .github import User, _login
@@ -64,6 +66,7 @@ def logout():
 
 # authentication
 
+
 @app.route("/auth/", methods=["POST"])
 def auth():
     app.logger.info("Login requested")
@@ -109,15 +112,26 @@ def repos(username):
 @redirect_to_home_missing_auth
 def repo(username, repo_name):
     # Repository page
-    repository = _login(
+    repo = _login(
         session["login_type"], session["login_input"]
     ).get_respository(repo_name)
-    return render_template("repo.html", repo=repository)
+    return render_template("repo.html", repo=repo)
 
 
 @app.errorhandler(Exception)
 def handle_exception(e):
-    return render_template("error.html", error=e), 500
+    # Get information about the exception
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    # Format the traceback
+    traceback_details = traceback.format_exception(
+        exc_type, exc_value, exc_traceback
+    )
+    return (
+        render_template(
+            "error.html", error=e, traceback_details="".join(traceback_details)
+        ),
+        500,
+    )
 
 
 if __name__ == "__main__":
