@@ -87,6 +87,18 @@ def repos(username):
     )
 
 
+@app.route("/<username>/repos/<repo_name>")
+@redirect_to_home_missing_auth
+def repo(username, repo_name):
+    app.logger.info("User repo page requested with login")
+    return render_template(
+        "repo.html",
+        repo=_login(
+            session["login_type"], session["login_input"]
+        ).get_respository(repo_name),
+    )
+
+
 def _login(login_type=None, login_input=None):
     """Returns a GithubClient object based on the login type and input.
 

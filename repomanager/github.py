@@ -4,24 +4,25 @@ import github
 
 class User:
     def __init__(self, token: str):
-        # pygithub
         self._github = github.Github(auth=github.Auth.Token(token))
-
-        # basic calls to get basic info
         self._user = self._github.get_user()
+
+        # repos
         self._repos = [Repository(repo) for repo in self._user.get_repos()]
 
+    # original github objects
     @property
     def github(self):
         return self._github
 
     @property
-    def repos(self):
-        return self._repos
-
-    @property
     def user(self):
         return self._user
+
+    # list of custom Repository objects
+    @property
+    def repos(self):
+        return self._repos
 
     # shortcuts to github.User properties
     @property
@@ -40,6 +41,11 @@ class User:
     def avatar_url(self):
         return self.user.avatar_url
 
+    def get_respository(self, name):
+        for repo in self.repos:
+            if repo.name == name:
+                return repo
+
     def __str__(self) -> str:
         return f"GithubClient(login={self.login}, repos={len(self.repos)})"
 
@@ -53,6 +59,7 @@ class Repository:
     def __init__(self, repo: github.Repository):
         self._repo = repo
 
+    # original repo object
     @property
     def repo(self):
         return self._repo
@@ -82,6 +89,11 @@ class Repository:
     def pages(self):
         return self.repo.has_pages
 
+    @property
+    def private(self):
+        return self.repo.private
+
+    # custom methods
     def _get_more_info(
         self,
     ):
