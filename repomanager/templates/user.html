@@ -1,14 +1,20 @@
 {% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content
 %}
 <section>
-  <!-- avatar image and basic info -->
-  <img src="{{user.avatar_url}}" alt="{{user.login}}'s avatar" height="100"/>
-  <h2>{{user.login}}</h2>
-  <p>
-    This is the repository manager of <em>{{user.name}}</em>, aka
-    <b>{{user.login}}</b>.
-  </p>
-  <a href="{{user.html_url}}">Visit {{user.login}} on GitHub</a>
+  <div class="overview">
+  <div class="avatar">
+    <img src="{{user.avatar_url}}" alt="{{user.login}}'s avatar" height="100" />
+  </div>
+  <div class ="userinfo">
+    <!-- avatar image and basic info -->
+    <h2>{{user.login}}</h2>
+    <p>
+      This is the repository manager of <em>{{user.name}}</em>, aka
+      <b>{{user.login}}</b>.
+    </p>
+    <a href="{{user.html_url}}">Visit {{user.login}} on GitHub</a>
+
+  </div>
 
 </section>
 <section>

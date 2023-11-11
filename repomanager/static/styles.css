@@ -40,7 +40,8 @@
 /* Style for the main content section */
 .main {
   position:relative;
-  padding: 16px;
+  padding-top: 8px;
+  padding-bottom: 16px;
   padding-left: 32px;
   padding-right: 32px;
   min-height: calc(100vh - 90px);
@@ -81,4 +82,19 @@ td.description {
 
 td.centered {
   text-align: center;
+}
+
+.overview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userinfo{
+  padding-left: 10px;
+}
+
+.userinfo h2{
+  margin: 0;
 }
