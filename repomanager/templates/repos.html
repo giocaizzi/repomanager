@@ -50,7 +50,7 @@
             {% for repo in repos %}
             <tr>
                 <!-- go to repo -->
-                <td><a href="{{url_for('repo',username=repo.username,repo_name=repo.name)}}">
+                <td><a href="{{url_for('repo',username=user.login,repo_name=repo.name)}}">
                         <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="Go to repo" height="20">
                     </a></td>
                 <!-- name with url -->

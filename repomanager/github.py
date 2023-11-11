@@ -34,22 +34,27 @@ class LoginError(BaseError):
     pass
 
 
-class User:
+class GitHubAPI:
     def __init__(self, token: str):
         self._github = github.Github(auth=github.Auth.Token(token))
-        self._user = self._github.get_user()
 
-        # repos
-        self._repos = [Repository(repo) for repo in self._user.get_repos()]
-
-    # original github objects
     @property
     def github(self):
         return self._github
 
-    @property
-    def user(self):
-        return self._user
+    def get_user(self):
+        return self.github.get_user()
+
+
+class User(GitHubAPI):
+    def __init__(self, token: str):
+        super().__init__(token)
+
+        # github.User object
+        # so to make the call only once
+        self._user = self.get_user()
+        # Repository objects from a single call to github.User.get_repos()
+        self._repos = [Repository(repo) for repo in self._user.get_repos()]
 
     # list of custom Repository objects
     @property
@@ -59,19 +64,19 @@ class User:
     # shortcuts to github.User properties
     @property
     def login(self):
-        return self.user.login
+        return self._user.login
 
     @property
     def name(self):
-        return self.user.name
+        return self._user.name
 
     @property
     def html_url(self):
-        return self.user.html_url
+        return self._user.html_url
 
     @property
     def avatar_url(self):
-        return self.user.avatar_url
+        return self._user.avatar_url
 
     def get_respository(self, name):
         for repo in self.repos:
@@ -92,42 +97,36 @@ class Repository:
         self._repo = repo
 
     @property
-    def username(self):
-        return self.repo.owner.login
+    def owner(self):
+        return self._repo.owner.login
 
-    # original repo object
-    @property
-    def repo(self):
-        return self._repo
-
-    # shortcuts to github.Repository properties
     @property
     def name(self):
-        return self.repo.name
+        return self._repo.name
 
     @property
     def url(self):
-        return self.repo.html_url
+        return self._repo.html_url
 
     @property
     def description(self):
-        return self.repo.description
+        return self._repo.description
 
     @property
     def language(self):
-        return self.repo.language
+        return self._repo.language
 
     @property
     def stars(self):
-        return self.repo.stargazers_count
+        return self._repo.stargazers_count
 
     @property
     def pages(self):
-        return self.repo.has_pages
+        return self._repo.has_pages
 
     @property
     def private(self):
-        return self.repo.private
+        return self._repo.private
 
     # custom methods
     def _get_more_info(

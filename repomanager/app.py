@@ -12,7 +12,8 @@ logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 app.secret_key = config("SECRET_KEY")
 
-@app.template_filter('is_none')
+
+@app.template_filter("is_none")
 def is_none_filter(value):
     return value is None
 
@@ -27,15 +28,24 @@ def redirect_to_home_missing_auth(f):
     return decorated_function
 
 
+# public pages
+
+
 @app.route("/")
 def home():
     if "login_type" in session and "login_input" in session:
+        user = _login(session["login_type"], session["login_input"])
         return render_template(
             "user.html",
-            user=_login(session["login_type"], session["login_input"]),
+            user=user,
         )
     else:
         return render_template("home.html")
+
+
+@app.route("/about/")
+def about():
+    return render_template("about.html")
 
 
 @app.route("/login/")
@@ -43,10 +53,16 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/about/")
-def about():
-    return render_template("about.html")
+@app.route("/logout/")
+def logout():
+    # Remove the keys from the session
+    session.pop("login_type", None)
+    session.pop("login_input", None)
+    app.logger.info("Logged out")
+    return redirect(url_for("home"))
 
+
+# authentication
 
 @app.route("/auth/", methods=["POST"])
 def auth():
@@ -62,36 +78,37 @@ def auth():
     return redirect(url_for("user", username=user.login))
 
 
-@app.route("/logout/")
-def logout():
-    # Remove the keys from the session
-    session.pop("login_type", None)
-    session.pop("login_input", None)
-    app.logger.info("Logged out")
-    return redirect(url_for("home"))
+# personal pages
 
 
 @app.route("/<username>/")
 @redirect_to_home_missing_auth
 def user(username):
+    # user page
+    user = _login(session["login_type"], session["login_input"])
     return render_template(
         "user.html",
-        user=_login(session["login_type"], session["login_input"]),
+        user=user,
     )
 
 
 @app.route("/<username>/repos/")
 @redirect_to_home_missing_auth
 def repos(username):
+    # table of repos overview
+    user = _login(session["login_type"], session["login_input"])
+    repos = user.repos
     return render_template(
         "repos.html",
-        repos=_login(session["login_type"], session["login_input"]).repos,
+        user=user,
+        repos=repos,
     )
 
 
 @app.route("/<username>/repos/<repo_name>/")
 @redirect_to_home_missing_auth
 def repo(username, repo_name):
+    # Repository page
     repository = _login(
         session["login_type"], session["login_input"]
     ).get_respository(repo_name)

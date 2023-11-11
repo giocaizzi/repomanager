@@ -3,4 +3,14 @@
     <h2>{{repo.name}}</h2>
     <p> This is a repository.</p>
 </section>
+<section>
+    <table>
+        {% for key, value in repo%}
+            <tr>
+                <th>{{ key }}</th>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
 {% endblock %}
