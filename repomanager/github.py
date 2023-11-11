@@ -135,11 +135,23 @@ class Repository(IterableProrprieties):
     @property
     def private(self):
         return self._repo.private
-    
+
     @property
     def fork(self):
         return self._repo.fork
-    
+
+    @property
+    def topics(self):
+        return self._repo.get_topics()
+
+    @property
+    def default_branch(self):
+        return self._repo.default_branch
+
+    def get_content(self):
+        """get content of default branch"""
+        return self._repo.get_contents("", ref=self.default_branch)
+
     # custom methods
     def _get_more_info(
         self,
