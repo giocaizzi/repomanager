@@ -6,35 +6,48 @@
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Private</th>
                 <th>Language</th>
                 <th>Stars</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for repo in repos %}
             <tr>
+                <!-- go to repo -->
+                <td><a href="{{url_for('repo',username=repo.username,repo_name=repo.name)}}">
+                    <img src="{{ url_for('static', filename='img/arrow.png') }}" alt="Go to repo"
+                        height="20">
+                </a></td>
+                <!-- name with url -->
                 <td><a href="{{repo.url}}">{{repo.name}}</a></td>
+                <!-- description -->
                 <td>{{repo.description|d('',true)}}</td>
+                <!-- privacy -->
                 {% if repo.private %}
                 <td class="centered"><img src="{{ url_for('static', filename='img/private.png') }}" alt="Private"
-                        width="20" height="20"></td>
+                        height="20"></td>
                 {% else %}
                 <td class="centered"><img src="{{ url_for('static', filename='img/public.png') }}" alt="Public"
-                        width="20" height="20"></td>
+                         height="20"></td>
                 {% endif %}
-                <td class="centered">{{repo.private}}</td>
+                <!-- language -->
                 {% if repo.language|is_none %}
                 <td class="centered"></td>
                 {% else %}
                 <td class="centered"><img src="{{ url_for('static', filename='img/'+repo.language + '.png') }}"
-                    alt="{{ repo.language }}" width="20" height="20"></td>
+                        alt="{{ repo.language }}" height="20"></td>
                 {% endif %}
-                <td class="centered">{{repo.stars}}</td>
-                <td><a href="{{url_for('repo',username=repo.username,repo_name=repo.name)}}"> Go.</a></td>
+                <!-- stars -->
+                {% if repo.stars==0 %}
+                <td class="centered"></td>
+                {% else %}
+                <td class="centered">{{repo.stars}}<img src="{{ url_for('static', filename='img/star.png') }}"
+                        alt="Star" height="20"></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
