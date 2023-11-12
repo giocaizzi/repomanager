@@ -66,6 +66,7 @@ ICONS = {
         "Python": Icon("/static/img/python.png"),
         "JavaScript": Icon("/static/img/javascript.png"),
         "Jupyter Notebook": Icon("/static/img/jupyter_notebook.png"),
+        "TeX": Icon("/static/img/tex.png"),
     },
     "private": {
         True: Icon("/static/img/private.png"),

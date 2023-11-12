@@ -2,6 +2,7 @@
 
 import github
 
+from.branch import Branch
 from .utils import IterableProrprieties
 
 

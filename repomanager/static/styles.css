@@ -9,6 +9,7 @@ body {
   align-items: center;
   font-family: Arial;
 }
+
 /* Style for the top navigation bar */
 .topnav,
 .footer {
@@ -84,3 +85,27 @@ img.icon {
   align-items: center;
   justify-content: flex-start;
 }
+
+/* tags */
+.tags{
+  display:flex;
+  padding-left: 0px;
+	list-style:none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin : 0px;
+	}
+
+.tags li{
+  background:#0089e0;
+  border: #2754a3 1px solid;
+  color:#fff;
+  text-decoration:none;
+  border-radius: 8px;
+  font-size:10px;
+  margin:2.5px;
+  } 
+
+.tags p{
+  margin : 5px;
+  }
