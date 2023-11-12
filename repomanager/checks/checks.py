@@ -1,6 +1,6 @@
 """content checks"""
 
-from .github.github import Branch
+from ..github.github import Branch
 
 
 class PackagingChecks:
