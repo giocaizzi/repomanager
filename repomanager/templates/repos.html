@@ -35,15 +35,104 @@
     }
 
     .filtercontainer label {
-        font-size: small;
-    }
+        <style>
+
+        /* Add styles for the filter buttons */
+        .selection-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .selection-button {
+            background-color: #f2f2f2;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .selection-button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Add styles for the filter input */
+        .filtercontainer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .filtercontainer label {
+            margin-right: 10px;
+        }
+
+        .filtercontainer input[type=text] {
+            padding: 5px;
+            border: none;
+            border-bottom: 2px solid #4CAF50;
+            font-size: 16px;
+        }
+
+        /* Add styles for the table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
 </style>
 {% endblock %}
 {% block extra_js %}
 <script>
-    function myFunction() {
+
+    // Function to open the tab
+    function openTab(evt, tabname) {
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabname).style.display = "block";
+        evt.currentTarget.className += " active";
+        console.log("tab opened")
+    }
+
+    // Function to filter the table by name
+    function filterByName() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
+        // Get the input element
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
         table = document.getElementById("repositoriesTable");
@@ -62,6 +151,30 @@
             }
         }
     }
+
+    // Function to filter the table by advanced criteria
+    function filterByAdvanced() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+
+        input = document.getElementById("advancedInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("repositoriesTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2]; // Adjust this to match the column you want to filter
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
 </script>
 {% endblock %}
 {% block content %}
@@ -70,11 +183,35 @@
     <p> These are the user's repositories.</p>
 </section>
 <section>
-    <div class="filtercontainer">
-        <label for="myInput">Filter by name:</label>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="respository name">
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'simple')" id="defaultTab">Simple Filter</button>
+        <button class="tablinks" onclick="openTab(event, 'advanced')">Advanced Filter</button>
     </div>
     <br>
+    <div class="tabcontent" id="simple" >
+        <div class="filtercontainer">
+            <label for="myInput">Filter by name:</label>
+            <input type="text" id="myInput" onkeyup="filterByName()" placeholder="repository name">
+        </div>
+        <br>
+    </div>
+    <div>
+        <div class="tabcontent" id="advanced">
+            <div class="filtercontainer">
+                <label for="advancedInput">Advanced Filter:</label>
+                <input type="text" id="advancedInput" onkeyup="filterByAdvanced()"
+                    placeholder="filter by name, language, stars, etc.">
+            </div>
+            <br>
+        </div>
+    </div>
+    <!-- at the end otherwise div is not loaded -->
+    <script>
+        // simulate click to get default tab
+        document.getElementById("defaultTab").click();
+        console.log("default tab clicked");
+    </script>
 </section>
 <section>
     <table id="repositoriesTable">
@@ -97,7 +234,8 @@
                     <a href="{{repo.url}}">
                         <img class="icon" src="/static/img/github.png" alt="Github" height="20">
                     </a>
-                    <!-- name with url -->
+                </td>
+                <!-- name with url -->
                 <td><a href="{{url_for('repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</td>
                 <!-- description -->
                 <td class="description">{{repo.description|d('',true)}}</td>
@@ -127,5 +265,4 @@
             {% endfor %}
         </tbody>
     </table>
-</section>
-{% endblock %}
+</section> {% endblock %}
