@@ -12,10 +12,11 @@
 
     td {
         border: 1px solid #b2b2b2;
+        font-size: small;
     }
 
     th {
-        padding: 10px;
+        padding: 5px;
     }
 
     td.description {
@@ -28,15 +29,55 @@
         text-align: center;
     }
 
+    .filtercontainer {
+        text-align: center;
+        border: 2px #b2b2b2;
+    }
 
+    .filtercontainer label {
+        font-size: small;
+    }
 </style>
+{% endblock %}
+{% block extra_js %}
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("repositoriesTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; // Adjust this to match the column you want to filter
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 {% endblock %}
 {% block content %}
 <section>
     <h2>Repositories</h2>
-    <p> This are the user repositories.</p>
+    <p> These are the user's repositories.</p>
+</section>
+<section>
+    <div class="filtercontainer">
+        <label for="myInput">Filter by name:</label>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="respository name">
+    </div>
     <br>
-    <table>
+</section>
+<section>
+    <table id="repositoriesTable">
         <thead>
             <tr>
                 <th></th>
