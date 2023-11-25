@@ -1,50 +1,7 @@
 {% extends 'layouts/base.html' %}
 {% block title %}Home{% endblock %}
 {% block extra_css %}
-<style>
-  .overview {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .login {
-    display: flex;
-    padding: 20px;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    width: fit-content;
-    margin: auto;
-    border: 1px solid #b2b2b2;
-  }
-
-  .login h2 {
-    margin: 0px;
-  }
-
-  .login form {
-    padding: 10px;
-  }
-
-  .avatar {
-    display: flex;
-  }
-
-  .userinfo {
-    display: flex;
-    padding-left: 20px;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-content: flex-start;
-    align-items: flex-start;
-  }
-
-  .userinfo h2 {
-    margin: 0;
-  }
-</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}" />
 {% endblock %}
 {% block content
 %}
@@ -74,7 +31,8 @@
   <ul>
     {% for repo in user.repos %}
     <li>
-      <a href="{{url_for('user.repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
+      <a href="{{url_for('user.repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</a>:
+      {{repo.description|d('',true)}}
     </li>
     {% endfor %}
 </section>
