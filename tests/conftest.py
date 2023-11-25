@@ -33,7 +33,7 @@ def logged_in_client(client):
         "/auth/",
         data={
             "login_type": "token",
-            "login_input": os.environ["GITHUB_TOKEN"],
+            "login_input": os.environ["GITHUBAPI_TOKEN"],
         },
     )
     return client

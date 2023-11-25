@@ -40,7 +40,7 @@ def test_auth_page_token(client):
             "/auth/",
             data={
                 "login_type": "token",
-                "login_input": os.environ["GITHUB_TOKEN"],
+                "login_input": os.environ["GITHUBAPI_TOKEN"],
             },
             follow_redirects=True,  # follow to check if redirect is correct
         )
