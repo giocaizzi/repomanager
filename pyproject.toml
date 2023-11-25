@@ -14,16 +14,12 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
 ]
-dependencies = [
-    "dotenv",
-    "flask",
-    "pygithub",
-]
+dependencies = ["dotenv", "flask", "pygithub"]
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
 dev = []
-test = []
+tests = ["pytest", "pytest-cov"]
 
 ### URLS
 [project.urls]
@@ -35,10 +31,14 @@ test = []
 [project.scripts]
 sample = "sample:main"
 
-### BLACK
-[tool.black]
-line-length = 79
-
 ### SETUPTOOLS
 [tool.setuptools]
 packages = ["repomanager"]
+
+### PYTEST
+[tool.pytest.ini_options]
+addopts = "--cov=./repomanager --cov-report=xml --cov-report=html"
+
+### BLACK
+[tool.black]
+line-length = 79
