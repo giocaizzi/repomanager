@@ -31,6 +31,7 @@ jobs:
     - run: pytest 
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        TEST_USER: ${{ secrets.TEST_USER }}
         
     - name: "Upload coverage to Codecov"
       uses: codecov/codecov-action@v3
