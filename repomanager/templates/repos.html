@@ -231,7 +231,7 @@
                     </a>
                 </td>
                 <!-- name with url -->
-                <td><a href="{{url_for('repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</td>
+                <td><a href="{{url_for('views.repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</td>
                 <!-- description -->
                 <td class="description">{{repo.description|d('',true)}}</td>
                 <!-- privacy -->
