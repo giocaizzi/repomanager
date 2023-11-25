@@ -25,6 +25,8 @@ def logout():
     # Remove the keys from the session
     session.pop("login_type", None)
     session.pop("login_input", None)
+    session.pop("login", None)
+    # log
     app.logger.info("Logged out")
     return redirect(url_for("public.home"))
 
