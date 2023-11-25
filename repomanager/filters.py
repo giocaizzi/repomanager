@@ -1,3 +1,4 @@
+"""jinja2 filters"""
 from markupsafe import Markup
 
 
