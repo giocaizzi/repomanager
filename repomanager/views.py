@@ -10,7 +10,7 @@ import traceback
 import sys
 
 from . import app
-from .github.user import _login
+from .models.github.user import _login
 
 
 # redirect
