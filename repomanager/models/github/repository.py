@@ -3,7 +3,7 @@
 import github
 
 from .branch import Branch
-from .utils import IterableProrprieties
+from . import IterableProrprieties
 
 
 class Repository(IterableProrprieties):

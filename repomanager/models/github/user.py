@@ -3,7 +3,7 @@
 from .repository import Repository
 
 from .github import GitHubAPI
-from .utils import LoginError
+from .exceptions import LoginError
 
 
 def _login(login_type=None, login_input=None):
