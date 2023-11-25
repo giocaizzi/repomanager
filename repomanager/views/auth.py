@@ -43,4 +43,5 @@ def auth():
     # storing correct login info in session
     session["login_type"] = request.form.get("login_type")
     session["login_input"] = request.form.get("login_input")
+    session["login"] = user.login
     return redirect(url_for("user.user", username=user.login))

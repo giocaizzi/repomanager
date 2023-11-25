@@ -1,12 +1,10 @@
 from flask import (
     render_template,
     Blueprint,
+    session,
     redirect,
     url_for,
 )
-
-from .utils import redirect_to_home_missing_auth
-
 
 public_blueprint = Blueprint("public", __name__)
 
@@ -15,9 +13,12 @@ public_blueprint = Blueprint("public", __name__)
 
 
 @public_blueprint.route("/")
-@redirect_to_home_missing_auth
 def home():
-    redirect(url_for("user"))
+    # if logged in, redirect to user page
+    if "login" in session:
+        return redirect(url_for("user.user", username=session["login"]))
+    else:
+        return render_template("home.html")
 
 
 @public_blueprint.route("/about/")

@@ -7,7 +7,13 @@ import os
 
 def test_home_page(client):
     response = client.get("/")
-    # redirected to public.home view if not logged in
+    # show home page if not logged in
+    assert response.status_code == 200
+
+
+def test_home_page_logged_in(logged_in_client):
+    response = logged_in_client.get("/")
+    # redirect to user page if logged in
     assert response.status_code == 302
 
 
@@ -44,21 +50,12 @@ def test_auth_page_password(client):
     assert response.status_code == 500
 
 
-@pytest.fixture
-def logged_in_client(client):
-    client.post(
-        "/auth/",
-        data={
-            "login_type": "token",
-            "login_input": os.environ["GITHUB_TOKEN"],
-        },
-    )
-    return client
+# ---------- USER VIEWS ----------
 
 
-# def test_user_page(client):
-#     response = client.get("/testuser/")
-#     assert response.status_code == 200
+def test_user_page(logged_in_client):
+    response = logged_in_client.get("/user/")
+    assert response.status_code == 200
 
 
 # def test_repos_page(client):

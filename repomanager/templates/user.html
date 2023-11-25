@@ -74,7 +74,7 @@
   <ul>
     {% for repo in user.repos %}
     <li>
-      <a href="{{url_for('views.repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
+      <a href="{{url_for('user.repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
     </li>
     {% endfor %}
 </section>

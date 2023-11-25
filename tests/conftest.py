@@ -1,4 +1,6 @@
 import pytest
+import os
+
 from repomanager import create_app
 
 
@@ -23,6 +25,18 @@ def test_app():
 @pytest.fixture()
 def client(test_app):
     return test_app.test_client()
+
+
+@pytest.fixture
+def logged_in_client(client):
+    client.post(
+        "/auth/",
+        data={
+            "login_type": "token",
+            "login_input": os.environ["GITHUB_TOKEN"],
+        },
+    )
+    return client
 
 
 @pytest.fixture()
