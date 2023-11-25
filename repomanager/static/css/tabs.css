@@ -1,0 +1,22 @@
+    .filtercontainer {
+        text-align: center;
+        border: 2px #b2b2b2;
+    }
+
+    /* Add styles for the filter buttons */
+    .selection-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    /* Add styles for the filter input */
+    .filtercontainer {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .filtercontainer label {
+        margin-right: 10px;
+    }
