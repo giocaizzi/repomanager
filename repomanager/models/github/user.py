@@ -65,7 +65,7 @@ class User(GitHubAPI):
                 return repo
 
     def __str__(self) -> str:
-        return f"GithubClient(login={self.login}, repos={len(self.repos)})"
+        return f"User(login={self.login}, repos={len(self.repos)})"
 
     def __repr__(self) -> str:
         return str(self)
