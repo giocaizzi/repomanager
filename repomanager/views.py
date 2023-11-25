@@ -4,16 +4,20 @@ from flask import (
     request,
     redirect,
     url_for,
+    Blueprint,
+    # current_app is a proxy to the app for logging
+    current_app as app,
 )
 from functools import wraps
 import traceback
 import sys
 
-from . import app
 from .models.github.user import _login
 
 
 # redirect
+
+views_blueprint = Blueprint("views", __name__)
 
 
 def redirect_to_home_missing_auth(f):
@@ -29,7 +33,7 @@ def redirect_to_home_missing_auth(f):
 # public pages
 
 
-@app.route("/")
+@views_blueprint.route("/")
 def home():
     if "login_type" in session and "login_input" in session:
         user = _login(session["login_type"], session["login_input"])
@@ -41,17 +45,17 @@ def home():
         return render_template("home.html")
 
 
-@app.route("/about/")
+@views_blueprint.route("/about/")
 def about():
     return render_template("about.html")
 
 
-@app.route("/login/")
+@views_blueprint.route("/login/")
 def login():
     return render_template("login.html")
 
 
-@app.route("/logout/")
+@views_blueprint.route("/logout/")
 def logout():
     # Remove the keys from the session
     session.pop("login_type", None)
@@ -63,7 +67,7 @@ def logout():
 # authentication
 
 
-@app.route("/auth/", methods=["POST"])
+@views_blueprint.route("/auth/", methods=["POST"])
 def auth():
     app.logger.info("Login requested")
     # checking if login, otherwise raise error
@@ -80,7 +84,7 @@ def auth():
 # personal pages
 
 
-@app.route("/<username>/")
+@views_blueprint.route("/<username>/")
 @redirect_to_home_missing_auth
 def user(username):
     # user page
@@ -91,7 +95,7 @@ def user(username):
     )
 
 
-@app.route("/<username>/repos/")
+@views_blueprint.route("/<username>/repos/")
 @redirect_to_home_missing_auth
 def repos(username):
     # table of repos overview
@@ -104,7 +108,7 @@ def repos(username):
     )
 
 
-@app.route("/<username>/repos/<repo_name>/")
+@views_blueprint.route("/<username>/repos/<repo_name>/")
 @redirect_to_home_missing_auth
 def repo(username, repo_name):
     # Repository page
@@ -114,7 +118,7 @@ def repo(username, repo_name):
     return render_template("repo.html", repo=repo)
 
 
-@app.errorhandler(Exception)
+@views_blueprint.errorhandler(Exception)
 def handle_exception(e):
     # Get information about the exception
     exc_type, exc_value, exc_traceback = sys.exc_info()
