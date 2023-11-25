@@ -2,7 +2,7 @@
 
 from typing import List
 
-import github
+from github.ContentFile import ContentFile
 
 
 class Branch:
@@ -10,7 +10,7 @@ class Branch:
 
     _content = None
 
-    def __init__(self, files: List[github.ContentFile]) -> None:
+    def __init__(self, files: List[ContentFile]) -> None:
         self._files = files
 
     @property

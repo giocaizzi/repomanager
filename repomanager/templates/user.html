@@ -69,12 +69,12 @@
   <h3>Repositories</h3>
   <!-- repositories -->
   <p>
-    There are {{user.repos|length}} <a href="{{url_for('repos',username=user.login)}}">repositories</a> in total.
+    There are {{user.repos|length}} <a href="{{url_for('user.repos',username=user.login)}}">repositories</a> in total.
   </p>
   <ul>
     {% for repo in user.repos %}
     <li>
-      <a href="{{url_for('repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
+      <a href="{{url_for('user.repo',username=user.login,repo_name=repo.name)}}">{{repo.name}}</a>: {{repo.description|d('',true)}}
     </li>
     {% endfor %}
 </section>

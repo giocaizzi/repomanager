@@ -33,7 +33,7 @@
       <a class="home" href="/">Repomanager</a>
       {% if "login_type" in session and "login_input" in session %}
       <!-- User is logged in -->
-      <a href="{{url_for('repos',username='{{user.login}}')}}">Repositories</a>
+      <a href="{{url_for('user.repos',username='{{user.login}}')}}">Repositories</a>
       {% endif %}
     </div>
     <div class="topnav_right">
