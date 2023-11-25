@@ -5,7 +5,6 @@ from flask import (
     url_for,
 )
 
-from ..models.github.user import _login
 from .utils import redirect_to_home_missing_auth
 
 
