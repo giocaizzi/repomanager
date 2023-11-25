@@ -14,12 +14,19 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
 ]
-dependencies = ["dotenv", "flask", "pygithub"]
+dependencies = [
+    "python-dotenv",
+    "flask",
+    "pygithub"
+]
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
 dev = []
-tests = ["pytest", "pytest-cov"]
+tests = [
+    "pytest",
+    "pytest-cov"
+]
 
 ### URLS
 [project.urls]
