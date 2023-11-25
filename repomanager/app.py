@@ -1,89 +1,13 @@
 """repomanager app"""
-from markupsafe import Markup
-
-
 # Entry point for the application.
 from . import app    # For application discovery by the 'flask' command.
 from . import views  # For import side-effects of setting up routes.
 
+from .filters import is_none_filter, is_different_filter, icon_filter
 
-
-# app filters
-@app.template_filter("is_none")
-def is_none_filter(value):
-    return value is None
-
-
-@app.template_filter("is_different")
-def is_different_filter(value1, value2):
-    return value1 != value2
-
-
-class Icon:
-    _unicode = False
-    _str = None
-
-    def __init__(self, str, unicode: bool = False):
-        self._str = str
-        self._unicode = unicode
-
-    @property
-    def unicode(self):
-        return self._unicode
-
-    @property
-    def div(self):
-        if self.unicode:
-            return Markup("<div class='unicode'>&#" + self._str + ";</div>")
-        else:
-            return Markup('<img class="icon" src="' + self._str + '" alt="">')
-
-
-ICONS = {
-    "defaults": {
-        True: Icon("9989", True),  # unicode checkmark
-        False: Icon("10060", True),  # unicode cross
-    },
-    "language": {
-        "Python": Icon("/static/img/python.png"),
-        "JavaScript": Icon("/static/img/javascript.png"),
-        "Jupyter Notebook": Icon("/static/img/jupyter_notebook.png"),
-        "TeX": Icon("/static/img/tex.png"),
-    },
-    "private": {
-        True: Icon("/static/img/private.png"),
-        False: Icon("/static/img/public.png"),
-    },
-}
-
-
-@app.template_filter("icon")
-def icon_filter(value, collection=None):
-    # if value is iterable (list or dict)
-    # return value
-    if isinstance(value, list) or isinstance(value, dict):
-        return value
-    else:
-        # if group is not passed
-        if collection is None:
-            # check defaults in
-            if value in ICONS["defaults"]:
-                return ICONS["defaults"][value].div
-            else:
-                return value
-        else:
-            if collection in ICONS:
-                if value in ICONS[collection]:
-                    return ICONS[collection][value].div
-                else:
-                    return value
-            else:
-                # check if there is an icon in defaults
-                if value in ICONS["defaults"]:
-                    return ICONS["defaults"][value].div
-                else:
-                    return value
-
+app.jinja_env.filters['icon'] = icon_filter
+app.jinja_env.filters['is_none'] = is_none_filter
+app.jinja_env.filters['is_different'] = is_different_filter
 
 if __name__ == "__main__":
     app.run()
