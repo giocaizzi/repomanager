@@ -1,13 +1,17 @@
-.selection-button {
-    background-color: #f2f2f2;
+.tabbutton {
+    background-color: #9d9d9d;
     border: none;
-    color: black;
-    padding: 10px 20px;
+    color: white;
+    padding: 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 5px;
+    margin: 0px;
+  }
+
+.tabbutton:hover {
+    background-color: rgb(129, 129, 129);
 }
