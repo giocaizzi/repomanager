@@ -1,11 +1,7 @@
 ### BUILD SYSTEM
 [build-system]
-requires = [
-    "setuptools",
-    "wheel"
-]
-build-backend = "setuptools.build_meta"
-
+requires = ['setuptools >= 61.0.0']
+build-backend = 'setuptools.build_meta'
 
 ### PROJECT
 [project]
@@ -25,9 +21,6 @@ classifiers = [
 ]
 dependencies = ["python-dotenv", "flask", "pygithub"]
 
-[tool.setuptools.packages.find]
-where = ["repomanager"]
-include = ["*"]
 
 ### DYNAMIC
 [tool.setuptools.dynamic]
@@ -44,7 +37,6 @@ tests = ["pytest", "pytest-cov"]
 "Homepage" = "https://github.com/giocaizzi/repomanager/"
 "Bug Reports" = "https://github.com/giocaizzi/repomanager/issues/"
 "Source" = "https://github.com/giocaizzi/repomanager/"
-
 
 ### PYTEST
 [tool.pytest.ini_options]
