@@ -1,6 +1,9 @@
 ### BUILD SYSTEM
 [build-system]
-requires = ['setuptools >= 61.0.0']
+requires = [
+    'setuptools >= 65.0.0', 
+    "setuptools-scm" # for extracting version from git
+]
 build-backend = 'setuptools.build_meta'
 
 ### PROJECT
@@ -21,11 +24,15 @@ classifiers = [
 ]
 dependencies = ["python-dotenv", "flask", "pygithub"]
 
-
 ### DYNAMIC
 [tool.setuptools.dynamic]
 # version from __init__.py
-version = { attr = "package.__version__" }
+version = { attr = "repomanager.__version__" }
+
+
+[tool.setuptools.packages.find]
+where = ["repomanager"]
+
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
