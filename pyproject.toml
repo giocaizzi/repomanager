@@ -22,7 +22,11 @@ dependencies = [
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
-dev = []
+dev = [
+    "black",
+    "flake8",
+    "flake8-rst-docstrings",
+]
 tests = [
     "pytest",
     "pytest-cov"
