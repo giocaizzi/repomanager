@@ -1,7 +1,16 @@
+### BUILD SYSTEM
+[build-system]
+requires = [
+    "setuptools",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+
 ### PROJECT
 [project]
 name = "repomanager"
-version = "0.0.3"
+dynamic = ["version"]
 description = "Manage GitHub repositories efficiently"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -14,23 +23,21 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
 ]
-dependencies = [
-    "python-dotenv",
-    "flask",
-    "pygithub"
-]
+dependencies = ["python-dotenv", "flask", "pygithub"]
+
+[tool.setuptools.packages.find]
+where = ["repomanager"]
+include = ["*"]
+
+### DYNAMIC
+[tool.setuptools.dynamic]
+# version from __init__.py
+version = { attr = "package.__version__" }
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
-dev = [
-    "black",
-    "flake8",
-    "flake8-rst-docstrings",
-]
-tests = [
-    "pytest",
-    "pytest-cov"
-]
+dev = ["black", "flake8", "flake8-rst-docstrings"]
+tests = ["pytest", "pytest-cov"]
 
 ### URLS
 [project.urls]
@@ -38,13 +45,6 @@ tests = [
 "Bug Reports" = "https://github.com/giocaizzi/repomanager/issues/"
 "Source" = "https://github.com/giocaizzi/repomanager/"
 
-### SCRIPTS
-[project.scripts]
-sample = "sample:main"
-
-### SETUPTOOLS
-[tool.setuptools]
-packages = ["repomanager"]
 
 ### PYTEST
 [tool.pytest.ini_options]

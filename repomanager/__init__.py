@@ -1,3 +1,8 @@
+"""manager GitHub repositories efficiently"""
+
+__version__ = "0.0.3"
+
+
 import os
 from dotenv import load_dotenv
 from flask import Flask
