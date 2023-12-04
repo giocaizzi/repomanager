@@ -20,9 +20,9 @@ classifiers = [
 ]
 dependencies = ["python-dotenv", "flask", "pygithub"]
 
-# find packages
-[tool.setuptools.packages.find]
-where = ["repomanager"]
+# PACKAGE DATA
+[tool.setuptools.package-data]
+repomanager = ["static/**/*", "templates/**/*"]
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
@@ -37,7 +37,7 @@ tests = ["pytest", "pytest-cov"]
 
 ### PYTEST
 [tool.pytest.ini_options]
-addopts = "--cov=./repomanager --cov-report=xml --cov-report=html"
+addopts = "--cov=./src/repomanager --cov-report=xml --cov-report=html"
 
 ### BLACK
 [tool.black]
