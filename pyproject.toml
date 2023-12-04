@@ -1,15 +1,12 @@
 ### BUILD SYSTEM
 [build-system]
-requires = [
-    'setuptools >= 65.0.0', 
-    "setuptools-scm" # for extracting version from git
-]
+requires = ['setuptools >= 65.0.0']
 build-backend = 'setuptools.build_meta'
 
 ### PROJECT
 [project]
 name = "repomanager"
-dynamic = ["version"]
+version = "0.0.3"
 description = "Manage GitHub repositories efficiently"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -18,21 +15,14 @@ keywords = ["flask", "github"]
 authors = [{ name = "Giorgio Caizzi", email = "giocaizzi@gmail.com" }]
 maintainers = [{ name = "Giorgio Caizzi", email = "giocaizzi@gmail.com" }]
 classifiers = [
-    "Development Status :: 3 - Alpha",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
 ]
 dependencies = ["python-dotenv", "flask", "pygithub"]
 
-### DYNAMIC
-[tool.setuptools.dynamic]
-# version from __init__.py
-version = { attr = "repomanager.__version__" }
-
-
+# find packages
 [tool.setuptools.packages.find]
 where = ["repomanager"]
-
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
