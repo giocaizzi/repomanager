@@ -1,11 +1,4 @@
 """manager GitHub repositories efficiently"""
-
-__version__ = "0.0.3"
-__license__ = "MIT"
-__author__ = "Giorgio Caizzi"
-__email__ = "giocaizzi@gmail.com"
-__url__ = "https://www.github.com/giocaizzi/repomanager"
-
 import os
 from dotenv import load_dotenv
 from flask import Flask
