@@ -10,6 +10,8 @@
   <title>{% block title %}Repomanager{% endblock %}</title>
   <!-- import css -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/icons.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}" />
   <!-- additional css -->
   {% block extra_css %}{% endblock %}
   <!-- additional js -->
@@ -54,7 +56,7 @@
       <a href="/about">About</a>
     </div>
     <div class="copyright">
-      <p>© 2021, Giorgio Caizzi</p>
+      <p>© 2023, Giorgio Caizzi</p>
     </div>
   </div>
 </body>

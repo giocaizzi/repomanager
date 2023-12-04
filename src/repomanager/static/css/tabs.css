@@ -1,0 +1,41 @@
+    
+    /* tabs */
+
+    .tab-selector {
+        background-color: #9d9d9d;
+        border: 1px solid #b2b2b2;
+
+    }
+
+    .tab-container {
+        padding : 5px;
+        padding-left : 15px;
+        background-color: #f2f2f2;
+        border: 1px solid #b2b2b2;
+
+    }
+    
+    
+    /* filters */
+
+    /* Add styles for the filter buttons */
+    .selection-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    /* Add styles for the filter input */
+    .filtercontainer {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        text-align: center;
+        border: 2px #b2b2b2;
+
+    }
+
+    .filtercontainer label {
+        margin-right: 10px;
+        font-size: small;
+    }

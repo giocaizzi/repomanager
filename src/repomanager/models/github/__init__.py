@@ -1,14 +1,3 @@
-"""utils"""
-
-
-class BaseError(Exception):
-    known_exception = True
-
-
-class LoginError(BaseError):
-    pass
-
-
 class IterableProrprieties:
     """make the class iterable over all its properties"""
 

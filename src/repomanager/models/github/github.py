@@ -4,6 +4,7 @@ import github
 
 class GitHubAPI:
     """wrapper around github.Github object"""
+    _github: github.Github = None
 
     def __init__(self, token: str):
         self._github = github.Github(auth=github.Auth.Token(token))

@@ -1,7 +1,12 @@
+### BUILD SYSTEM
+[build-system]
+requires = ['setuptools >= 65.0.0', "wheel"]
+build-backend = 'setuptools.build_meta'
+
 ### PROJECT
 [project]
 name = "repomanager"
-version = "0.0.2"
+version = "0.0.3"
 description = "Manage GitHub repositories efficiently"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -10,23 +15,19 @@ keywords = ["flask", "github"]
 authors = [{ name = "Giorgio Caizzi", email = "giocaizzi@gmail.com" }]
 maintainers = [{ name = "Giorgio Caizzi", email = "giocaizzi@gmail.com" }]
 classifiers = [
-    "Development Status :: 3 - Alpha",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
 ]
-dependencies = [
-    "python-dotenv",
-    "flask",
-    "pygithub"
-]
+dependencies = ["python-dotenv", "flask", "pygithub"]
+
+# PACKAGE DATA
+[tool.setuptools.package-data]
+repomanager = ["static/**/*", "templates/**/*"]
 
 ### OPTIONAL DEPENDENCIES
 [project.optional-dependencies]
-dev = []
-tests = [
-    "pytest",
-    "pytest-cov"
-]
+dev = ["black", "flake8", "flake8-rst-docstrings"]
+tests = ["pytest", "pytest-cov"]
 
 ### URLS
 [project.urls]
@@ -34,17 +35,9 @@ tests = [
 "Bug Reports" = "https://github.com/giocaizzi/repomanager/issues/"
 "Source" = "https://github.com/giocaizzi/repomanager/"
 
-### SCRIPTS
-[project.scripts]
-sample = "sample:main"
-
-### SETUPTOOLS
-[tool.setuptools]
-packages = ["repomanager"]
-
 ### PYTEST
 [tool.pytest.ini_options]
-addopts = "--cov=./repomanager --cov-report=xml --cov-report=html"
+addopts = "--cov=./src/repomanager --cov-report=xml --cov-report=html"
 
 ### BLACK
 [tool.black]
