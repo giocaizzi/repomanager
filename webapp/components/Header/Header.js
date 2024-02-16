@@ -3,15 +3,23 @@ import PropTypes from 'prop-types';
 
 import './Header.css';
 
-export default function Header({ isPublic, ...props}) {
+export default function Header({ isPublic, ...props }) {
 
     return (
         <div className="topnav">
             <div className="topnav_left">
-                <SimpleLink text="Repomanager" href="/" />
+                <div className="topnav_logo bold">
+                    <SimpleLink text="Repomanager" href="/" />
+                </div>
                 {!isPublic && (
-                    <SimpleLink text="Repositories" href={`/user/repos/${props.login}`} />
+                    <div className='topnav_private'>
+                        <div>|</div>
+                        <div className="topnav_links">
+                            <SimpleLink text="Repositories" href={`/user/repos/${props.login}`} />
+                        </div>
+                    </div>
                 )}
+
             </div>
             <div className="topnav_right">
                 {!isPublic ? (
@@ -28,7 +36,7 @@ Header.propTypes = {
     /** Public or private (logged in) header*/
     isPublic: PropTypes.bool,
     /** other properties */
-    props : PropTypes.shape({
+    props: PropTypes.shape({
         /** The user's login */
         login: PropTypes.string
     })
