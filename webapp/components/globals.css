@@ -15,8 +15,12 @@
   }
 } */
 
+/*  HTML tags */
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  overflow: hidden;
 }
 
 a {
@@ -30,8 +34,24 @@ a:hover {
   text-decoration: underline;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  height: 100vh;
+}
+
+/* CUSTOM CLASSES */
+
 .bold {
   font-weight: bold;
+}
+
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 /* @layer utilities {
