@@ -1,0 +1,17 @@
+/* Style for the top navigation bar */
+.topnav {
+    /* size and position */
+    height: 40px;
+    position: relative;
+    width: 100%;
+    /* flex */
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    /* style */
+    /* border: 2px solid #ff00d0; */
+    background-color: #000000;
+
+}
