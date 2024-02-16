@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  server:
+    image: repomamager-server
+    build: 
+      context: ./server
+      args:
+        - PORT=$PORT_SERVER
+    ports:
+      - $PORT_SERVER:$PORT_SERVER
+  # client:
+  #   image: repomamager-webapp
+  #   build:
+  #     context: ./client
+  #     args:
+  #       - PORT=$PORT_CLIENT
+  #   ports:
+  #     - "$PORT_CLIENT:$PORT_CLIENT"
