@@ -1,8 +1,11 @@
-"""manager GitHub repositories efficiently"""
+"""repomanager app"""
+
 import os
-from dotenv import load_dotenv
 from flask import Flask
-import logging
+
+
+# Entry point for the application.
+
 
 # For import side-effects of setting up routes.
 from .views import (
@@ -10,19 +13,6 @@ from .views import (
     public_blueprint,
     user_blueprint,
 )
-
-# filters
-from .filters import is_none_filter, is_different_filter, icon_filter
-
-# error handling
-from .errors import handle_exception
-
-# load environment variables
-load_dotenv()
-
-
-# logging
-logging.basicConfig(level=logging.DEBUG)
 
 
 # Flask app
@@ -35,18 +25,10 @@ def create_app():
         SECRET_KEY=os.environ["SECRET_KEY"],
     )
 
-    # error handling
-    app.register_error_handler(Exception, handle_exception)
-
     # Register the blueprints
     app.register_blueprint(public_blueprint)
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(user_blueprint)
-
-    # jinja filters
-    app.jinja_env.filters["icon"] = icon_filter
-    app.jinja_env.filters["is_none"] = is_none_filter
-    app.jinja_env.filters["is_different"] = is_different_filter
 
     # ensure the instance folder exists
     try:
@@ -55,3 +37,8 @@ def create_app():
         pass
 
     return app
+
+
+if __name__ == "__main__":
+    app = create_app()
+    app.run()
