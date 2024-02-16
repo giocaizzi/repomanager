@@ -12,6 +12,10 @@
     align-content: center;
     /* style */
     /* border: 2px solid #ff00d0; */
-    background-color: #000000;
+    background-color: var(--background-color);
 
 }
+
+.topnav_right {
+    margin-left: auto;
+  }

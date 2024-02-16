@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
-import './Header.css';
 import SimpleLink from '@components/SimpleLink/SimpleLink';
+import PropTypes from 'prop-types';
+
+import './Header.css';
 
 export default function Header({ isPublic, ...props}) {
 
