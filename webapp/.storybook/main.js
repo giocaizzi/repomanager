@@ -5,7 +5,6 @@ import path from "path";
 
 const config = {
   stories: [
-    "../components/**/*.mdx",
     "../components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
