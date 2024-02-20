@@ -13,6 +13,6 @@ def home():
     return jsonify(
         {
             "message": "Welcome to the Repomanager API",
-            "version": metadata.metadata("rpihomekit")["version"],
+            "version": metadata.metadata("repomanager")["version"],
         }
     )
