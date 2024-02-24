@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Header.css';
 
-export default function Header({ isPublic, ...props }) {
+export default function Header({ isPublic = true, ...props }) {
 
     return (
         <div className="topnav">
@@ -40,11 +40,4 @@ Header.propTypes = {
         /** The user's login */
         login: PropTypes.string
     })
-};
-
-Header.defaultProps = {
-    isPublic: true,
-    props: {
-        login: "login"
-    }
 };
