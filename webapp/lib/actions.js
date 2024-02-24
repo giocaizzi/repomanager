@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 
 
 export async function login(formData) {
-    const response = await fetch('/auth/', {
+    const response = await fetch('/api/auth/', {
         method: 'POST',
         body: formData
     });

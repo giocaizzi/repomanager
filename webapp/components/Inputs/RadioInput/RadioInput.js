@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import './RadioInput.css';
 
-export default function RadioInput({ label = "label", id = "radio_id", name = "", value = "", checked = true }) {
+export default function RadioInput({ label = "label", id = "radio_id", name = "", value = "", checked = false }) {
     return (
         <div className='radioinput'>
             {checked ?

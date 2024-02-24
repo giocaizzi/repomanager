@@ -14,7 +14,7 @@ export default function Form({}) {
             <p>Select how you want to log in:</p>
             <form action={dispatch}>
                 <div className='radios'>
-                    <RadioInput label="Token" id="token" name="login_type" value="token"></RadioInput>
+                    <RadioInput label="Token" id="token" name="login_type" value="token" checked={true}></RadioInput>
                     <RadioInput label="Username" id="username" name="login_type" value="username"></RadioInput>
                 </div>
                 <TextInput id="login_input" name="login_input" placeholder="token or username"></TextInput>
