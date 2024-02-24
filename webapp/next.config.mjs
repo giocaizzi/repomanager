@@ -8,7 +8,7 @@ const nextConfig = {
         return [
             {
                 source: '/api/:path*',
-                destination: 'http://localhost:' + String(process.env.PORT_SERVER) + '/:path*',
+                destination: 'http://127.0.0.1:' + String(process.env.PORT_SERVER) + '/:path*',
             },
         ];
     }

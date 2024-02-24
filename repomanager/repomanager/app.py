@@ -2,6 +2,7 @@
 
 import os
 from flask import Flask
+from flask_cors import CORS
 
 
 # Entry point for the application.
@@ -19,6 +20,8 @@ from .views import (
 def create_app():
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    # enable CORS
+    CORS(app)
 
     # configure the app
     app.config.from_mapping(

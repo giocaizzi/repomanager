@@ -18,7 +18,7 @@ export default function Form({}) {
                     <RadioInput label="Username" id="username" name="login_type" value="username"></RadioInput>
                 </div>
                 <TextInput id="login_input" name="login_input" placeholder="token or username"></TextInput>
-                <div>{errorMessage && <p>{errorMessage}</p>}</div>
+                <div className='text-error'>{errorMessage && <p>{errorMessage}</p>}</div>
                 <input type="submit" value="Login"></input>
             </form>
         </div>

@@ -43,6 +43,10 @@ main {
 
 /* CUSTOM CLASSES */
 
+.text-error{
+  color: red;
+}
+
 .bold {
   font-weight: bold;
 }

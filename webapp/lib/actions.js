@@ -1,8 +1,6 @@
 import { redirect } from 'next/navigation'
 // import { cookies } from "next/headers";
 
-
-
 export async function login(formData) {
     const response = await fetch('/api/auth/', {
         method: 'POST',
