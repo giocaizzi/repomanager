@@ -14,10 +14,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={metadata.description} />
       </head>
       <body>
-      <Header/>
-        <main>
         {children}
-        </main>
       </body>
     </html>
   );

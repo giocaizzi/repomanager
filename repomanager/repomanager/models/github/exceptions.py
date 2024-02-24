@@ -7,3 +7,11 @@ class RepomanagerBaseError(Exception):
 
 class LoginError(RepomanagerBaseError):
     pass
+
+
+class UnsupportedLoginType(RepomanagerBaseError):
+    pass
+
+
+class UnknownLoginType(RepomanagerBaseError):
+    pass

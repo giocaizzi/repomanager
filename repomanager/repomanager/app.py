@@ -27,7 +27,7 @@ def create_app():
 
     # Register the blueprints
     app.register_blueprint(public_blueprint)
-    # app.register_blueprint(auth_blueprint)
+    app.register_blueprint(auth_blueprint)
     # app.register_blueprint(user_blueprint)
 
     # ensure the instance folder exists

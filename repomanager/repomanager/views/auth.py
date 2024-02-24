@@ -1,5 +1,5 @@
 from flask import (
-    render_template,
+    jsonify,
     session,
     request,
     redirect,
@@ -8,36 +8,43 @@ from flask import (
     # current_app is a proxy to the app for logging
     current_app as app,
 )
+import jwt
+from datetime import datetime, timedelta
 
 from ..models.github.user import _login
+from ..models.github.exceptions import (
+    LoginError,
+    UnsupportedLoginType,
+    UnknownLoginType,
+)
 
 
 auth_blueprint = Blueprint("auth", __name__)
 
-@auth_blueprint.route("/logout/")
-def logout():
-    # Remove the keys from the session
-    session.pop("login_type", None)
-    session.pop("login_input", None)
-    session.pop("login", None)
-    # log
-    app.logger.info("Logged out")
-    return redirect(url_for("public.home"))
-
 
 # authentication
-
-
 @auth_blueprint.route("/auth/", methods=["POST"])
 def auth():
+    login_type = request.form.get("login_type")
+    login_input = request.form.get("login_input")
     app.logger.info("Login requested")
-    # checking if login, otherwise raise error
-    user = _login(
-        login_type=request.form.get("login_type"),
-        login_input=request.form.get("login_input"),
-    )
-    # storing correct login info in session
-    session["login_type"] = request.form.get("login_type")
-    session["login_input"] = request.form.get("login_input")
-    session["login"] = user.login
-    return redirect(url_for("user.user", username=user.login))
+    try:
+        # checking if login, otherwise raise error
+        user = _login(
+            login_type=login_type,
+            login_input=login_input,
+        )
+        token = jwt.encode(
+            {
+                "token": login_input,
+                "exp": datetime.utcnow() + timedelta(minutes=30),
+            },
+            app.config["SECRET_KEY"],
+        )
+        return jsonify({"token": token.decode("UTF-8"), "username": user.login}, 200)
+    except LoginError as e:
+        return jsonify({"error": str(e)}), 400
+    except UnsupportedLoginType as e:
+        return jsonify({"error": str(e)}), 400
+    except UnknownLoginType as e:
+        return jsonify({"error": str(e)}), 400

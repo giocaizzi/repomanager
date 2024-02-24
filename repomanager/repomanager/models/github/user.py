@@ -3,7 +3,7 @@
 from .repository import Repository
 
 from .github import GitHubAPI
-from .exceptions import LoginError
+from .exceptions import LoginError, UnsupportedLoginType, UnknownLoginType
 
 
 def _login(login_type=None, login_input=None):
@@ -20,9 +20,9 @@ def _login(login_type=None, login_input=None):
         except Exception as e:
             raise LoginError("Login with token failed.", e)
     elif login_type == "username":
-        raise LoginError("Only token login is currently supported.")
+        raise UnsupportedLoginType("Only token login is currently supported.")
     else:
-        raise LoginError(f"Unknown login type : {login_type}")
+        raise UnknownLoginType(f"Unknown login type : {login_type}")
 
 
 class User(GitHubAPI):
