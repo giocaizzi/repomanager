@@ -3,7 +3,7 @@
 import RadioInput from '@components/Inputs/RadioInput/RadioInput';
 import TextInput from '@components/Inputs/TextInput/TextInput';
 import { login } from '@lib/actions';
-import { useFormState, useFormStatus } from 'react-dom'
+import { useFormState } from 'react-dom'
 import './Form.css';
 
 export default function Form({}) {
