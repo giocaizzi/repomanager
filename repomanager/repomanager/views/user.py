@@ -6,7 +6,6 @@ from flask import (
 )
 
 from ..models.github.user import _login
-from .utils import redirect_to_home_missing_auth
 from ..middleware import token_required
 
 
@@ -15,7 +14,6 @@ user_blueprint = Blueprint("user", __name__)
 
 @token_required
 @user_blueprint.route("/<username>/")
-@redirect_to_home_missing_auth
 def user(username):
     # user page
     user = _login(session["login_type"], session["login_input"])
@@ -23,7 +21,6 @@ def user(username):
 
 
 # @user_blueprint.route("/<username>/repos/")
-# @redirect_to_home_missing_auth
 # def repos(username):
 #     # table of repos overview
 #     user = _login(session["login_type"], session["login_input"])
@@ -36,7 +33,6 @@ def user(username):
 
 
 # @user_blueprint.route("/<username>/repos/<repo_name>/")
-# @redirect_to_home_missing_auth
 # def repo(username, repo_name):
 #     # Repository page
 #     repo = _login(
