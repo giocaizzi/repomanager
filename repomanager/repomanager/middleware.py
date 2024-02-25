@@ -25,3 +25,14 @@ def token_required(f):
         return f(current_user, *args, **kwargs)
 
     return decorated
+
+
+def require_json_content_type(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        content_type = request.headers.get("Content-Type")
+        if content_type != "application/json":
+            return jsonify({"message": "Content-Type not supported!"}), 415
+        return f(*args, **kwargs)
+
+    return decorated_function
