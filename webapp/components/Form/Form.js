@@ -4,25 +4,30 @@ import RadioInput from '@components/Inputs/RadioInput/RadioInput';
 import TextInput from '@components/Inputs/TextInput/TextInput';
 import { useState } from 'react';
 import './Form.css';
+import { useRouter } from 'next/navigation'
 
 import { fetchData} from '@lib/fetch';
 
 export default function Form({}) {
     const [errorMessage, setErrorMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault()
         setIsLoading(true)
         const body = {
             login_type: event.target.login_type.value,
             login_input: event.target.login_input.value
         }
-        const data = fetchData("/auth/", "POST", body)
-        // console.log(data)
+        const data = await fetchData("/auth/", "POST", body)
+        console.log(data)
         setIsLoading(false)
         if ("error" in data) {
             setErrorMessage(data.error)
+        }
+        else{
+            router.push('/'+ data.username)
         }
 
     }

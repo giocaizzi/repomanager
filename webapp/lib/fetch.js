@@ -14,5 +14,5 @@ export async function fetchData(endpoint, method, body) {
             }
         });
     const data = await response.json();
-    return data, response.status;
+    return data;
 };
