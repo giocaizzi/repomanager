@@ -16,8 +16,9 @@ user_blueprint = Blueprint("user", __name__)
 @user_blueprint.route("/<username>/")
 def user(username):
     # user page
-    user = _login(session["login_type"], session["login_input"])
-    return jsonify(user)
+    # user = _login(session["login_type"], session["login_input"])
+    # return jsonify(user)
+    return jsonify({"message": "User page"})
 
 
 # @user_blueprint.route("/<username>/repos/")
