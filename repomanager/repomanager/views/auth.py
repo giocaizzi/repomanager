@@ -40,7 +40,7 @@ def auth():
             },
             app.config["SECRET_KEY"],
         )
-        return jsonify({"token": token, "username": user.login}, 200)
+        return jsonify({"token": token, "username": user.login}), 200
     except LoginError as e:
         return jsonify({"error": str(e)}), 400
     except UnsupportedLoginType as e:
