@@ -76,5 +76,5 @@ class User(GitHubAPI):
             "name": self.name,
             "html_url": self.html_url,
             "avatar_url": self.avatar_url,
-            "repos": [repo.to_json() for repo in self.repos],
+            "repos": [repo.name for repo in self.repos],
         }

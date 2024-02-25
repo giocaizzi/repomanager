@@ -1,3 +1,5 @@
+import UserOverview from '@/components/UserOverview/UserOverview'
+
 import { cookies } from 'next/headers'
 import { fetchData } from '@/lib/fetch'
 
@@ -10,16 +12,8 @@ export default async function User({ params }) {
   return (
     <>
       <h1>Welcome {params.user}</h1>
-      <h3>Cookies</h3>
-      {cookieStore.getAll().map((cookie) => (
-        <div key={cookie.name}>
-          <p>Name: {cookie.name}</p>
-          <p>Value: {cookie.value}</p>
-        </div>
-      ))}
-      <h3>Data</h3>
+      <UserOverview props={data} />
       <p>{JSON.stringify(data)}</p>
-      <p>{JSON.stringify(headers)}</p>
     </>
   )
 }

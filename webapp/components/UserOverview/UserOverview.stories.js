@@ -6,6 +6,7 @@ export default {
     argTypes: {
         name: { control: "text" },
         login: { control: "text" },
+        avatar_url: { control: "text" },
     },
 };
 
