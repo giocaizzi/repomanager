@@ -79,3 +79,19 @@ class Repository(IterableProrprieties):
 
     def __repr__(self) -> str:
         return str(self)
+
+    def to_json(self):
+        return {
+            "owner": self.owner,
+            "name": self.name,
+            "url": self.url,
+            "description": self.description,
+            "language": self.language,
+            "stars": self.stars,
+            "pages": self.pages,
+            "private": self.private,
+            "fork": self.fork,
+            "topics": self.topics,
+            "default_branch": self.default_branch,
+            "branches": [],
+        }

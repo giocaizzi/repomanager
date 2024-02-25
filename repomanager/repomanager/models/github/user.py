@@ -69,3 +69,12 @@ class User(GitHubAPI):
 
     def __repr__(self) -> str:
         return str(self)
+
+    def to_json(self):
+        return {
+            "login": self.login,
+            "name": self.name,
+            "html_url": self.html_url,
+            "avatar_url": self.avatar_url,
+            "repos": [repo.to_json() for repo in self.repos],
+        }

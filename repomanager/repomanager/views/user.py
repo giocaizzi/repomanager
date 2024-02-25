@@ -16,9 +16,8 @@ user_blueprint = Blueprint("user", __name__)
 @token_required
 def user(current_user, username):
     # user page
-    # user = _login(session["login_type"], session["login_input"])
-    # return jsonify(user)
-    return jsonify({"message": "User page", "user": current_user})
+    user = _login(current_user["login_type"], current_user["login_input"])
+    return jsonify(user.to_json())
 
 
 # @user_blueprint.route("/<username>/repos/")
