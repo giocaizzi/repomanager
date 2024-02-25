@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 
 
 export default function SimpleLink({ text = "Link", href = "/", handleClick = null }) {
@@ -9,7 +10,9 @@ export default function SimpleLink({ text = "Link", href = "/", handleClick = nu
     return (
         <>
             {
-                handleClick === null ? <Link href={href}>{text}</Link> : <Link href={href} onClick={() => { handleClick() }}>{text}</Link>
+                handleClick === null ?
+                    <Link href={{}}>{text}</Link> :
+                    <Link href={{}} onClick={() => { handleClick() }}>{text}</Link>
             }
         </>
     );
