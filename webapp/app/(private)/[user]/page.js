@@ -3,7 +3,10 @@ import { fetchData } from '@/lib/fetch'
 
 export default async function User({ params }) {
   const cookieStore = cookies()
-  const data = await fetchData("/" + params.user, "GET")
+  const headers = {
+    "Authorization": "Bearer " +cookieStore.get("token").value
+  }
+  const data = await fetchData("/" + params.user, "GET", headers)
   return (
     <>
       <h1>Welcome {params.user}</h1>
@@ -16,6 +19,7 @@ export default async function User({ params }) {
       ))}
       <h3>Data</h3>
       <p>{JSON.stringify(data)}</p>
+      <p>{JSON.stringify(headers)}</p>
     </>
   )
 }

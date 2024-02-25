@@ -1,17 +1,19 @@
 // fetch 
 
+import { defaultHead } from "next/head";
+
 const URL = "http://" + process.env.HOST + ":" + process.env.PORT_SERVER;
 
-
-export async function fetchData(endpoint, method, body) {
+const defaultHeaders = {
+    "Content-Type": "application/json",
+}
+export async function fetchData(endpoint, method, headers, body) {
     const response = await fetch(
         URL + endpoint,
         {
             method: method,
             body: JSON.stringify(body),
-            headers: {
-                "Content-Type": "application/json",
-            }
+            headers: headers ? { ...defaultHeaders, ...headers } : defaultHeaders,
         });
     const data = await response.json();
     return data;

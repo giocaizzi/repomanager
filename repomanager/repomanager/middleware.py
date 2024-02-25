@@ -9,18 +9,46 @@ def token_required(f):
         token = None
         # jwt is passed in the request header
         if "Authorization" in request.headers:
-            token = request.headers["Authorization"].split(" ")[1]
+            authorization = request.headers["Authorization"].split(" ")
+            if len(authorization) > 1:
+                auth_type = authorization[0]
+                if auth_type.lower() != "bearer":
+                    return (
+                        jsonify(
+                            {
+                                "message": "Invalid Authorization type."
+                                / " Must be in form of"
+                                / " `Authorization: Bearer XXXXX`"
+                            }
+                        ),
+                        401,
+                    )
+                else:
+                    token = authorization[1]
+            else:
+                return (
+                    jsonify(
+                        {
+                            "message": "Invalid token specification."
+                            / " Must be in form of"
+                            / " `Authorization: Bearer XXXXX`"
+                        }
+                    ),
+                    401,
+                )
         # return 401 if token is not passed
         if not token:
             return jsonify({"message": "Token is missing !!"}), 401
 
         try:
             # decoding the payload to fetch the stored details
-            data = jwt.decode(token, current_app.config["SECRET_KEY"])
+            data = jwt.decode(
+                token, current_app.config["SECRET_KEY"], algorithms="HS256"
+            )
             # setting the current user context
             current_user = data
-        except Exception:
-            return jsonify({"message": "Invalid token!"}), 401
+        except Exception as e:
+            return jsonify({"message": "Invalid token!", "error": str(e)}), 401
         # returns the current logged in users context to the routes
         return f(current_user, *args, **kwargs)
 
