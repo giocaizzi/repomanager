@@ -1,9 +1,6 @@
 from flask import (
     jsonify,
-    session,
     request,
-    redirect,
-    url_for,
     Blueprint,
     # current_app is a proxy to the app for logging
     current_app as app,
@@ -25,9 +22,9 @@ auth_blueprint = Blueprint("auth", __name__)
 # authentication
 @auth_blueprint.route("/auth/", methods=["POST"])
 def auth():
-    login_type = request.form.get("login_type")
-    login_input = request.form.get("login_input")
-    app.logger.info("Login requested")
+    login_type = request.data.get("login_type")
+    login_input = request.data.get("login_input")
+    app.logger.info("Login requested: {} {}".format(login_type, login_input))
     try:
         # checking if login, otherwise raise error
         user = _login(
