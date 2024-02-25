@@ -7,6 +7,7 @@ import './Form.css';
 import { useRouter } from 'next/navigation'
 
 import { fetchData} from '@lib/fetch';
+import { create_login_cookie } from '@lib/cookies';
 
 export default function Form({}) {
     const [errorMessage, setErrorMessage] = useState(null);
@@ -27,6 +28,7 @@ export default function Form({}) {
             setErrorMessage(data.error)
         }
         else{
+            await create_login_cookie(data)
             router.push('/'+ data.username)
         }
 

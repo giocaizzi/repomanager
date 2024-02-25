@@ -1,6 +1,8 @@
 import SimpleLink from '@components/SimpleLink/SimpleLink';
 import PropTypes from 'prop-types';
 
+import { delete_login_cookie } from '@lib/cookies';
+
 import './Header.css';
 
 export default function Header({ isPublic = true, ...props }) {
@@ -23,7 +25,7 @@ export default function Header({ isPublic = true, ...props }) {
             </div>
             <div className="topnav_right">
                 {!isPublic ? (
-                    <SimpleLink text="Logout" href="/logout" />
+                    <SimpleLink text="Logout" href="/" handleClick={delete_login_cookie} />
                 ) : (
                     <SimpleLink text="Login" href="/login" />
                 )}
