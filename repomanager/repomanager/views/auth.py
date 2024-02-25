@@ -35,7 +35,8 @@ def auth():
         )
         token = jwt.encode(
             {
-                "token": login_input,
+                "login_input": login_input,
+                "login_type": login_type,
                 "exp": datetime.utcnow() + timedelta(minutes=30),
             },
             app.config["SECRET_KEY"],

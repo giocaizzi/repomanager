@@ -42,11 +42,9 @@ def token_required(f):
 
         try:
             # decoding the payload to fetch the stored details
-            data = jwt.decode(
+            current_user = jwt.decode(
                 token, current_app.config["SECRET_KEY"], algorithms="HS256"
             )
-            # setting the current user context
-            current_user = data
         except Exception as e:
             return jsonify({"message": "Invalid token!", "error": str(e)}), 401
         # returns the current logged in users context to the routes
