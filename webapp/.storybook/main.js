@@ -25,7 +25,7 @@ const config = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@components': path.resolve(__dirname, "../components"),
-      '@libs': path.resolve(__dirname, "../libs"),
+      '@lib': path.resolve(__dirname, "../lib"),
     };
     return config;
   },
