@@ -18,15 +18,12 @@ export default function Form({}) {
             login_type: event.target.login_type.value,
             login_input: event.target.login_input.value
         }
-        try {
-            const response = fetchData("/auth", "POST", body)
-            console.log(response)
+        const data = fetchData("/auth/", "POST", body)
+        setIsLoading(false)
+        if (data.error) {
+            setErrorMessage(data.error)
         }
-        catch (error) {
-            setErrorMessage(error.message)
-        } finally {
-            setIsLoading(false)
-        }
+
     }
  
     return (

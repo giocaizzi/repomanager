@@ -7,29 +7,19 @@ export async function fetchData(endpoint, method, body) {
 
     console.log(URL + endpoint, method, body)
 
-    try {
-        const response = await fetch(
-            URL + endpoint,
-            {
-                method: method,
-                body: body,
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            }
-        )
-        // check for errors in the response
-        if (!response.ok) {
-            throw new Error("RequestError: " + response.status + " " + response.statusText)
-        }
-    }
-    // other errors
-    catch (error) {
-        console.error(error)
-        throw new Error("Error: " + error.message)
-    }
-    // 
-    console.log(response)
 
-    return response
-}
+    const response = await fetch(
+        URL + endpoint,
+        {
+            method: method,
+            body: JSON.stringify(body),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+
+    // if (!response.ok) {
+    //     return JSON.stringify({ error: response.statusText });
+    // }
+    return response.json();
+};
