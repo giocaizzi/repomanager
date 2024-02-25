@@ -1,4 +1,5 @@
 import UserOverview from '@/components/UserOverview/UserOverview'
+import UserRepositories from '@/components/UserRepositories/UserRepositories'
 
 import { cookies } from 'next/headers'
 import { fetchData } from '@/lib/fetch'
@@ -12,8 +13,10 @@ export default async function User({ params }) {
   return (
     <>
       <h1>Welcome {params.user}</h1>
-      <UserOverview props={data} />
-      <p>{JSON.stringify(data)}</p>
+      {/* <p>{JSON.stringify(headers)}</p> */}
+      <UserOverview name={data.name} login={data.login} avatar_url={data.avatar_url} />
+      <UserRepositories repositories={data.repositories}/>
+      {/* <p>{JSON.stringify(data)}</p> */}
     </>
   )
 }
