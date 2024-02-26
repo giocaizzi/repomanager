@@ -40,6 +40,6 @@ export default function RepositoriesTable({ repositories }) {
 }
 
 RepositoriesTable.propTypes = {
-
+    /** The array of repositories to display */
     repositories: PropTypes.array.isRequired
 }
