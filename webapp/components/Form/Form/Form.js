@@ -1,7 +1,7 @@
 'use client'
 
-import RadioInput from '@/components/Inputs/RadioInput/RadioInput';
-import TextInput from '@/components/Inputs/TextInput/TextInput';
+import RadioInput from '@/components/Form/Inputs/RadioInput/RadioInput';
+import TextInput from '@/components/Form/Inputs/TextInput/TextInput';
 import { useState } from 'react';
 import './Form.css';
 import { useRouter } from 'next/navigation'

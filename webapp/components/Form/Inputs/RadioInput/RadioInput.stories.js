@@ -1,7 +1,7 @@
 import RadioInput from './RadioInput';
 
 export default {
-    title: 'RadioInput',
+    title: 'Forms/RadioInput',
     component: RadioInput,
     // argTypes: {
     //     label: { control: 'text' },

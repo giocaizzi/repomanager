@@ -1,7 +1,7 @@
 import TextInput from './TextInput';
 
 export default {
-    title: 'TextInput',
+    title: 'Forms/TextInput',
     component: TextInput,
 };
 

@@ -1,9 +1,18 @@
 import BaseIcon from './BaseIcon'
 
 export default {
-    title: 'BaseIcon',
+    title: 'Icons/BaseIcon',
     component: BaseIcon,
     argTypes: {
+        type : {
+            control: {
+                type: 'select',
+                options: ['img', 'text']
+            }
+        },
+        text : {
+            control: 'text',
+        },
         src: {
             control: 'text'
         },
@@ -13,4 +22,19 @@ export default {
     }
 }
 
-const Default = (args) => <Icon {...args} />
+export const Default = {}
+
+export const ImageIcon = {
+    args: {
+        type: 'img',
+        src: '/github.png',
+        alt: 'Github Icon'
+    }
+}
+
+export const TextIcon = {
+    args: {
+        type: 'text',
+        text: '🚀'
+    }
+}
