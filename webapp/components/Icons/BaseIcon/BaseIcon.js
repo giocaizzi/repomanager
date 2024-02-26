@@ -21,6 +21,5 @@ BaseIcon.propTypes = {
     /** image source */
     src: PropTypes.string,
     /** image alt text */
-    
     alt: PropTypes.string
 }

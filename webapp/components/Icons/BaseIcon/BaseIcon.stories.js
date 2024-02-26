@@ -35,6 +35,6 @@ export const ImageIcon = {
 export const TextIcon = {
     args: {
         type: 'text',
-        text: '🚀'
+        text: 'TextIcon 🚀'
     }
 }
