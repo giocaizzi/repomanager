@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import styles from './RepositoriesTableRow.module.css';
 
 export default function RepositoriesTableRow({
-    url = "/",
-    name = "reponame",
-    description = "this is a description",
-    isPrivate = false, language = "Python",
-    stars = 100,
-    pages = false
+    url,
+    name ,
+    description,
+    isPrivate,
+    language,
+    stars,
+    pages,
 }) {
     return (
         <>
@@ -36,7 +37,6 @@ export default function RepositoriesTableRow({
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell centered={true}>
                     <BooleanIcon topic="truth" value={pages ? "True" : "False"} />
-                    {pages ? "True" : "False"}
                 </RepositoriesTableRowCell>
             </tr >
         </>
@@ -44,12 +44,19 @@ export default function RepositoriesTableRow({
 }
 
 RepositoriesTableRow.propTypes = {
-    url: PropTypes.string,
-    name: PropTypes.string,
-    description: PropTypes.string,
-    isPrivate: PropTypes.bool,
-    language: PropTypes.string,
-    stars: PropTypes.number,
-    pages: PropTypes.number
+    /** The URL of the repository */
+    name: PropTypes.string.isRequired,
+    /** The name of the repository */
+    url: PropTypes.string.isRequired,
+    /** The description of the repository */
+    description: PropTypes.string.isRequired,
+    /** Whether the repository is private or not */
+    isPrivate: PropTypes.bool.isRequired,
+    /** The main language of the repository */
+    language: PropTypes.string.isRequired,
+    /** The number of stars the repository has */
+    stars: PropTypes.number.isRequired,
+    /** Whether the repository has GitHub Pages or not */
+    pages: PropTypes.bool.isRequired
 }
 

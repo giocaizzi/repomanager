@@ -20,7 +20,7 @@ export default function RepositoriesTableRowCell({
 
 RepositoriesTableRowCell.propTypes = {
     /** The content of the cell */
-    children: PropTypes.node,
+    children: PropTypes.node.isRequired,
     /** make the cell a link */
     link: PropTypes.string,
     /** center the content of the cell */

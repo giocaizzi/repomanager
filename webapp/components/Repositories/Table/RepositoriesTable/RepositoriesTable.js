@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './RepositoriesTable.module.css';
 
 export default function RepositoriesTable({ repositories }) {
+    if (!repositories || repositories.length === 0) {
+        return <p>There are no repositories to display.</p>
+    }
     return (
-        <div>
-            <p> These are the user's repositories.</p>
+        <>
             <table id="repositoriesTable" className={styles.table}>
                 <thead className={styles.th}>
                     <tr>
@@ -33,10 +35,11 @@ export default function RepositoriesTable({ repositories }) {
                     }
                 </tbody>
             </table>
-        </div>
+        </>
     )
 }
 
 RepositoriesTable.propTypes = {
-    repositories: PropTypes.array
+
+    repositories: PropTypes.array.isRequired
 }

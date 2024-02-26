@@ -1,4 +1,5 @@
 import BaseIcon from '@/components/Icons/BaseIcon/BaseIcon';
+import PropTypes from 'prop-types';
 
 const languageIcons = {
     "Python": "python.png",
@@ -16,4 +17,9 @@ export default function LanguageIcon({ language }) {
             {knownLanguage ? <BaseIcon src={"/languages/" + languageIcons[language]} alt={language} /> : language}
         </>
     );
+}
+
+LanguageIcon.propTypes = {
+    /** The language icon to display */
+    language: PropTypes.oneOf(Object.keys(languageIcons)).isRequired,
 }

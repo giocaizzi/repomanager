@@ -1,17 +1,6 @@
 import PropTypes from 'prop-types';
 
-const repos = [
-    {
-        name: "Repo 1",
-        description: "The first repository"
-    },
-    { name: "Repo 2" },
-    {
-        name: "Repo 3", description: "The third repository"
-    }
-];
-
-export default function UserRepositories({ repositories = repos }) {
+export default function UserRepositories({ repositories }) {
     return (
         <div>
             <h3>Repositories</h3>
@@ -27,6 +16,6 @@ export default function UserRepositories({ repositories = repos }) {
 
 UserRepositories.propTypes = {
     /** Array of repositories */
-    repositories: PropTypes.array
+    repositories: PropTypes.array.isRequired,
 };
 
