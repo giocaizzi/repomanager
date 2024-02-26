@@ -8,6 +8,10 @@ import './Header.css';
 export default async function Header({ isPublic = true, ...props }) {
 
     const cookie = await get_login_cookie()
+    const goodCookie = cookie.token !== undefined && cookie.username !== undefined
+    if (!goodCookie) {
+        throw new Error("No token in cookie")
+    }
 
     return (
         <div className="topnav">
@@ -15,11 +19,11 @@ export default async function Header({ isPublic = true, ...props }) {
                 <div className="topnav_logo bold">
                     <SimpleLink text="Repomanager" href="/" />
                 </div>
-                {!isPublic && (
+                {!isPublic && goodCookie && (
                     <div className='topnav_private'>
                         <div>|</div>
                         <div className="topnav_links">
-                            <SimpleLink text="Repositories" href={`/user/repos/${props.login}`} />
+                            <SimpleLink text="Repositories" href={"/" + cookie.username.value + "/repo"} />
                         </div>
                     </div>
                 )}
