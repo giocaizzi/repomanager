@@ -1,7 +1,7 @@
-import SimpleLink from '@components/SimpleLink/SimpleLink';
+import SimpleLink from '@/components/SimpleLink/SimpleLink';
 import PropTypes from 'prop-types';
 
-import { delete_login_cookie, get_login_cookie } from '@lib/cookies';
+import { delete_login_cookie, get_login_cookie } from '@/lib/cookies';
 
 import './Header.css';
 

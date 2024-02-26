@@ -1,5 +1,5 @@
-import RepositoriesTableRowCell from '../RepositoriesTableRowCell/RepositoriesTableRowCell';
-import Icon from '@components/Icon/Icon';
+import RepositoriesTableRowCell from '@/components/Repositories/RepositoriesTableRowCell/RepositoriesTableRowCell';
+import Icon from '@/components/Icon/Icon';
 import PropTypes from 'prop-types';
 import styles from './RepositoriesTableRow.module.css';
 

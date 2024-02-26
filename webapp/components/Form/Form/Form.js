@@ -1,13 +1,13 @@
 'use client'
 
-import RadioInput from '@components/Inputs/RadioInput/RadioInput';
-import TextInput from '@components/Inputs/TextInput/TextInput';
+import RadioInput from '@/components/Inputs/RadioInput/RadioInput';
+import TextInput from '@/components/Inputs/TextInput/TextInput';
 import { useState } from 'react';
 import './Form.css';
 import { useRouter } from 'next/navigation'
 
-import { fetchData} from '@lib/fetch';
-import { create_login_cookie } from '@lib/cookies';
+import { fetchData} from '@/lib/fetch';
+import { create_login_cookie } from '@/lib/cookies';
 
 export default function Form({}) {
     const [errorMessage, setErrorMessage] = useState(null);

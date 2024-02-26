@@ -28,8 +28,8 @@ const config = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@components': path.resolve(__dirname, "../components"),
-      '@lib': path.resolve(__dirname, "../lib"),
+      '@/components': path.resolve(__dirname, "../components"),
+      '@/lib': path.resolve(__dirname, "../lib"),
     };
     return config;
   },
