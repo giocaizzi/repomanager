@@ -1,4 +1,4 @@
-import RepositoriesTableRow from "@/components/Repositories/RepositoriesTableRow/RepositoriesTableRow";
+import RepositoriesTableRow from "@/components/Repositories/Table/RepositoriesTableRow/RepositoriesTableRow";
 import PropTypes from 'prop-types';
 import styles from './RepositoriesTable.module.css';
 

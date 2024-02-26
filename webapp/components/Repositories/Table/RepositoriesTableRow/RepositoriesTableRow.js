@@ -1,4 +1,4 @@
-import RepositoriesTableRowCell from '@/components/Repositories/RepositoriesTableRowCell/RepositoriesTableRowCell';
+import RepositoriesTableRowCell from '@/components/Repositories/Table/RepositoriesTableRowCell/RepositoriesTableRowCell';
 import BaseIcon from '@/components/Icons/BaseIcon/BaseIcon';
 import LanguageIcon from '@/components/Icons/LanguageIcon/LanguageIcon';
 import BooleanIcon from '@/components/Icons/BooleanIcon/BooleanIcon';

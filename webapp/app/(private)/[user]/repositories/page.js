@@ -1,4 +1,4 @@
-import RepositoriesTable from "@/components/Repositories/RepositoriesTable/RepositoriesTable"
+import RepositoriesTable from "@/components/Repositories/Table/RepositoriesTable/RepositoriesTable"
 import DebugComponent from "@/components/Utils/DebugComponent"
 import { fetchData } from "@/lib/fetch"
 
