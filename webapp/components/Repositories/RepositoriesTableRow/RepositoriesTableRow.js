@@ -1,4 +1,5 @@
 import RepositoriesTableRowCell from '../RepositoriesTableRowCell/RepositoriesTableRowCell';
+import Icon from '@components/Icon/Icon';
 import PropTypes from 'prop-types';
 import styles from './RepositoriesTableRow.module.css';
 
@@ -14,7 +15,7 @@ export default function RepositoriesTableRow({
         <>
             <tr key={name} className={styles.tr}>
                 < RepositoriesTableRowCell centered={true} link={url}>
-                        <img className={styles.githubIcon} src="/github.png" alt="Github link" height="20"></img>
+                    <Icon src="/github.png" alt="Github link" />
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell>
                     {name}
