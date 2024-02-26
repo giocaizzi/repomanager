@@ -1,5 +1,7 @@
 import RepositoriesTableRowCell from '@/components/Repositories/RepositoriesTableRowCell/RepositoriesTableRowCell';
-import Icon from '@/components/Icon/Icon';
+import BaseIcon from '@/components/Icons/BaseIcon/BaseIcon';
+import LanguageIcon from '@/components/Icons/LanguageIcon/LanguageIcon';
+import BooleanIcon from '@/components/Icons/BooleanIcon/BooleanIcon';
 import PropTypes from 'prop-types';
 import styles from './RepositoriesTableRow.module.css';
 
@@ -15,7 +17,7 @@ export default function RepositoriesTableRow({
         <>
             <tr key={name} className={styles.tr}>
                 < RepositoriesTableRowCell centered={true} link={url}>
-                    <Icon src="/github.png" alt="Github link" />
+                    <BaseIcon src="/github.png" alt="Github link" />
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell>
                     {name}
@@ -24,10 +26,10 @@ export default function RepositoriesTableRow({
                     {description}
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell centered={true}>
-                    {isPrivate ? "Private" : "Public"}
+                    <BooleanIcon topic="privacy" value={isPrivate ? "Private" : "Public"} />
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell centered={true}>
-                    {language}
+                    <LanguageIcon language={language} />
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell centered={true}>
                     {stars}

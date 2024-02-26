@@ -24,7 +24,7 @@ export default function RepositoriesTable({ repositories }) {
                             <RepositoriesTableRow
                                 name={repository.name}
                                 description={repository.description}
-                                isPrivate={repository.isPrivate}
+                                isPrivate={repository.private}
                                 language={repository.language}
                                 stars={repository.stars}
                                 pages={repository.pages}

@@ -1,8 +1,8 @@
-import Icon from './Icon'
+import BaseIcon from './BaseIcon'
 
 export default {
-    title: 'Icon',
-    component: Icon,
+    title: 'BaseIcon',
+    component: BaseIcon,
     argTypes: {
         src: {
             control: 'text'
@@ -13,4 +13,4 @@ export default {
     }
 }
 
-const Template = (args) => <Icon {...args} />
+const Default = (args) => <Icon {...args} />
