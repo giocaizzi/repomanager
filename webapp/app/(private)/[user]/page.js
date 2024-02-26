@@ -8,10 +8,8 @@ export default async function User({ params }) {
   return (
     <>
       <h1>Welcome {params.user}</h1>
-      {/* <p>{JSON.stringify(headers)}</p> */}
       <UserOverview name={data.name} login={data.login} avatar_url={data.avatar_url} />
       <UserRepositories repositories={data.repositories}/>
-      {/* <p>{JSON.stringify(data)}</p> */}
     </>
   )
 }

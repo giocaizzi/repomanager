@@ -82,7 +82,7 @@ class Repository(IterableProrprieties):
 
     def to_json(self):
         return {
-            "owner": self.owner,
+            # "owner": self.owner,
             "name": self.name,
             "url": self.url,
             "description": self.description,
@@ -91,7 +91,7 @@ class Repository(IterableProrprieties):
             "pages": self.pages,
             "private": self.private,
             "fork": self.fork,
-            "topics": self.topics,
-            "default_branch": self.default_branch,
-            "branches": [],
+            # "topics": self.topics,
+            # "default_branch": self.default_branch,
+            # "branches": [],
         }

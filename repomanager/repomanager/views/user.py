@@ -1,6 +1,4 @@
 from flask import (
-    render_template,
-    session,
     Blueprint,
     jsonify,
 )
@@ -25,13 +23,7 @@ def user(current_user, username):
 def repos(current_user, username):
     # table of repos overview
     user = _login(current_user["login_type"], current_user["login_input"])
-    repos = user.repos
-    return jsonify(repos)
-    # return render_template(
-    #     "repos.html",
-    #     user=user,
-    #     repos=repos,
-    # )
+    return jsonify([repo.to_json() for repo in user.repos])
 
 
 # @user_blueprint.route("/<username>/repos/<repo_name>/")
