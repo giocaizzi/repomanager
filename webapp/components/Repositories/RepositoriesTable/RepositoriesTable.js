@@ -1,13 +1,13 @@
 import RepositoriesTableRow from "../RepositoriesTableRow/RepositoriesTableRow"
 import PropTypes from 'prop-types';
-
+import styles from './RepositoriesTable.module.css';
 
 export default function RepositoriesTable({ repositories }) {
     return (
         <div>
             <p> These are the user's repositories.</p>
-            <table id="repositoriesTable">
-                <thead>
+            <table id="repositoriesTable" className={styles.table}>
+                <thead className={styles.th}>
                     <tr>
                         <th></th>
                         <th>Name</th>

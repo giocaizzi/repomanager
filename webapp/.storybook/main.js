@@ -20,6 +20,10 @@ const config = {
   docs: {
     autodocs: true,
   },
+  /* static */
+  staticDirs: [
+    '../public',
+  ],
   /* solve "@" imports */
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {

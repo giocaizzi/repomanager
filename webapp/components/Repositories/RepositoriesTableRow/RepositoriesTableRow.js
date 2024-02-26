@@ -14,7 +14,7 @@ export default function RepositoriesTableRow({
         <>
             <tr key={name} className={styles.tr}>
                 < RepositoriesTableRowCell centered={true} link={url}>
-                        <img class="icon" src="/static/img/github.png" alt="Github" height="20"></img>
+                        <img className={styles.githubIcon} src="/github.png" alt="Github link" height="20"></img>
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell>
                     {name}

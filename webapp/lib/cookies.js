@@ -26,10 +26,15 @@ export async function delete_login_cookie() {
 // get login cookies
 
 export async function get_login_cookie() {
-  return {
-    "token": cookies().get('token'),
-    "username": cookies().get('username')
+  try{
+    return {
+      "token": cookies().get('token'),
+      "username": cookies().get('username')
+    }
+  } catch {
+      return {}
   }
+
 }
 
 // get headers with token for requests
@@ -37,7 +42,7 @@ export async function get_login_cookie() {
 export async function get_headers() {
   var header = null
   // if token exists in cookies, return header with token
-  if (cookies().get("token")) {
+  if (cookies().has("token")) {
     header = {
       "Authorization": "Bearer " + cookies().get("token").value
     }
