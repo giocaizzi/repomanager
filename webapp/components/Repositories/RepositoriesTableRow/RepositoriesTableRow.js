@@ -35,7 +35,8 @@ export default function RepositoriesTableRow({
                     {stars}
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell centered={true}>
-                    {pages ? "Yes" : "No"}
+                    <BooleanIcon topic="truth" value={pages ? "True" : "False"} />
+                    {pages ? "True" : "False"}
                 </RepositoriesTableRowCell>
             </tr >
         </>
