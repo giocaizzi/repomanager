@@ -22,7 +22,6 @@ export default function RepositoriesTable({ repositories }) {
                     {
                         repositories.map((repository, index) =>
                             <RepositoriesTableRow
-                                key={index}
                                 name={repository.name}
                                 description={repository.description}
                                 isPrivate={repository.isPrivate}

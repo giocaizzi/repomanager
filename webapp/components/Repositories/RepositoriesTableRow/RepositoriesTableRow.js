@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import styles from './RepositoriesTableRow.module.css';
 
 export default function RepositoriesTableRow({
     url = "/",
@@ -10,7 +11,7 @@ export default function RepositoriesTableRow({
 }) {
     return (
         <>
-            <tr>
+            <tr key={name} className={styles.tr}>
                 <td class="centered">
                     <a href={url}>
                         <img class="icon" src="/static/img/github.png" alt="Github" height="20"></img>

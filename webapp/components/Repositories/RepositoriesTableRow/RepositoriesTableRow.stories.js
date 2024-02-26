@@ -1,7 +1,7 @@
 import RepositoriesTableRow from './RepositoriesTableRow';
 
 export default {
-    title: 'RepositoriesTableRow',
+    title: 'Repositories/Row',
     component: RepositoriesTableRow,
 };
 

@@ -1,7 +1,7 @@
 import UserRepositories from "./UserRepositories";
 
 export default {
-    title: "UserRepositories",
+    title: "User/Repositories",
     component: UserRepositories,
     argTypes: {
         repositories: { control: "object" }

@@ -1,5 +1,5 @@
-import UserOverview from '@/components/UserOverview/UserOverview'
-import UserRepositories from '@/components/UserRepositories/UserRepositories'
+import UserOverview from '@/components/User/UserOverview/UserOverview'
+import UserRepositories from '@/components/User/UserRepositories/UserRepositories'
 
 import { set_headers } from '@/lib/cookies'
 import { fetchData } from '@/lib/fetch'

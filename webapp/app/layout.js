@@ -1,5 +1,5 @@
 import "@components/globals.css";
-import Header from "@/components/Header/Header";
+import Header from "@/components/Layouts/Header/Header";
 
 export const metadata = {
   title: "repomanager",
