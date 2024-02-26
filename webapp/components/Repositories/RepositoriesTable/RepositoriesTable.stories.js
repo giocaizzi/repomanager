@@ -16,7 +16,7 @@ const repositories = [
     },
     {
         name: "repo2",
-        description: "description2",
+        description: "This is a really long description of the repository.his is a really long description of the repository.",
         isPrivate: false,
         language: "java",
         stars: 20,

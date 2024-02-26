@@ -1,3 +1,4 @@
+import RepositoriesTableRowCell from '../RepositoriesTableRowCell/RepositoriesTableRowCell';
 import PropTypes from 'prop-types';
 import styles from './RepositoriesTableRow.module.css';
 
@@ -12,29 +13,27 @@ export default function RepositoriesTableRow({
     return (
         <>
             <tr key={name} className={styles.tr}>
-                <td class="centered">
-                    <a href={url}>
+                < RepositoriesTableRowCell centered={true} link={url}>
                         <img class="icon" src="/static/img/github.png" alt="Github" height="20"></img>
-                    </a>
-                </td>
-                <td >
-                    <a href="{{url_for('user.repo',username=user.login,repo_name=repo.name)}}">{name}</a>
-                </td>
-                <td class="description">
+                </RepositoriesTableRowCell>
+                <RepositoriesTableRowCell>
+                    {name}
+                </RepositoriesTableRowCell>
+                <RepositoriesTableRowCell>
                     {description}
-                </td>
-                <td class="centered">
-                    {isPrivate}
-                </td>
-                <td class="centered">
+                </RepositoriesTableRowCell>
+                <RepositoriesTableRowCell centered={true}>
+                    {isPrivate ? "Private" : "Public"}
+                </RepositoriesTableRowCell>
+                <RepositoriesTableRowCell centered={true}>
                     {language}
-                </td>
-                <td class="centered">
+                </RepositoriesTableRowCell>
+                <RepositoriesTableRowCell centered={true}>
                     {stars}
-                </td>
-                <td class="centered">
-                    {pages}
-                </td>
+                </RepositoriesTableRowCell>
+                <RepositoriesTableRowCell centered={true}>
+                    {pages ? "Yes" : "No"}
+                </RepositoriesTableRowCell>
             </tr >
         </>
     )
