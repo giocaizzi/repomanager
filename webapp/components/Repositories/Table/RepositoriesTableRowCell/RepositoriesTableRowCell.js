@@ -1,4 +1,5 @@
 import styles from './RepositoriesTableRowCell.module.css'
+import PropTypes from 'prop-types'
 
 export default function RepositoriesTableRowCell({
     children,
@@ -15,4 +16,13 @@ export default function RepositoriesTableRowCell({
         </>
 
     )
+}
+
+RepositoriesTableRowCell.propTypes = {
+    /** The content of the cell */
+    children: PropTypes.node,
+    /** make the cell a link */
+    link: PropTypes.string,
+    /** center the content of the cell */
+    centered: PropTypes.bool
 }

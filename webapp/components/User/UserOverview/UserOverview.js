@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './UserOverview.module.css';
 
 
-export default function UserOverview({ name = "GitHub", login = "github", avatar_url = "https://avatars.githubusercontent.com/u/9919?v=4" }) {
+export default function UserOverview({ name, login, avatar_url}) {
     return (
         <div class={styles.overview}>
             <div class={styles.avatar}>
@@ -20,8 +20,11 @@ export default function UserOverview({ name = "GitHub", login = "github", avatar
 }
 
 UserOverview.propTypes = {
-    name: PropTypes.string,
-    login: PropTypes.string,
-    avatar_url: PropTypes.string
+    /** The name of the user */
+    name: PropTypes.string.isRequired,
+    /** The login of the user */
+    login: PropTypes.string.isRequired,
+    /** The URL of the user's avatar */
+    avatar_url: PropTypes.string.isRequired,
 };
 

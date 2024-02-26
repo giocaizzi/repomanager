@@ -3,14 +3,16 @@ import SimpleLink from "./SimpleLink";
 export default {
     title: "SimpleLink",
     component: SimpleLink,
-    argTypes: {
-        text: {
-            control: "text",
-        },
-        href: {
-            control: "text",
-        },
+    args: {
+        text: "Hello",
+        href: "https://www.google.com"
     },
 };
 
-export const Default = (args) => <SimpleLink {...args} />;
+export const Default = {};
+
+export const WithClickHandler = {
+    args: {
+        handleClick: () => { alert("Clicked!") }
+    }
+};

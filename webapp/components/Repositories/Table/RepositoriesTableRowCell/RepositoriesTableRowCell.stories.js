@@ -3,11 +3,24 @@ import RepositoriesTableRowCell from "./RepositoriesTableRowCell";
 export default {
     title: "Repositories/RowCell",
     component: RepositoriesTableRowCell,
-    argTypes: {
-        link: { control: "boolean" },
-        centered: { control: "boolean" },
-
+    args :{
+        children: "Hello"
+    },
+    parameters: {
+        layout: "centered",
     }
 };
 
-export const Default = (args) => <RepositoriesTableRowCell {...args}>Default</RepositoriesTableRowCell>;
+export const Default = {}
+
+export const Link = {
+    args: {
+        link: ""
+    }
+}
+
+export const Centered = {
+    args: {
+        centered: true
+    }
+}

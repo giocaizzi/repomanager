@@ -3,23 +3,6 @@ import BaseIcon from './BaseIcon'
 export default {
     title: 'Icons/BaseIcon',
     component: BaseIcon,
-    argTypes: {
-        type : {
-            control: {
-                type: 'select',
-                options: ['img', 'text']
-            }
-        },
-        text : {
-            control: 'text',
-        },
-        src: {
-            control: 'text'
-        },
-        alt: {
-            control: 'text'
-        }
-    }
 }
 
 export const Default = {}
