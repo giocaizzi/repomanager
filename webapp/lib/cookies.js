@@ -2,6 +2,8 @@
 
 import { cookies } from 'next/headers'
 
+// create and delete cookies
+
 export async function create_login_cookie(data) {
   if ("token" in data) {
     cookies().set('token', data.token)
@@ -19,6 +21,10 @@ export async function delete_login_cookie() {
   console.log("Login cookies deleted! Logged out!")
 };
 
+//////////////////////////////////////////
+
+// get login cookies
+
 export async function get_login_cookie() {
   return {
     "token": cookies().get('token'),
@@ -26,10 +32,15 @@ export async function get_login_cookie() {
   }
 }
 
+// get headers with token for requests
 
-export async function set_headers() {
-  const headers = {
-    "Authorization": "Bearer " + cookies().get("token").value
+export async function get_headers() {
+  var header = null
+  // if token exists in cookies, return header with token
+  if (cookies().get("token")) {
+    header = {
+      "Authorization": "Bearer " + cookies().get("token").value
+    }
   }
-  return headers
+  return header
 }

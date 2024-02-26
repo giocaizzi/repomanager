@@ -21,7 +21,7 @@ export default function Form({}) {
             login_type: event.target.login_type.value,
             login_input: event.target.login_input.value
         }
-        const data = await fetchData("/auth/", "POST", null, body)
+        const data = await fetchData("/auth/", "POST", body)
         console.log(data)
         setIsLoading(false)
         if ("error" in data) {
