@@ -9,7 +9,7 @@ export default async function Header({ isPublic = true, ...props }) {
 
     const cookie = await get_login_cookie()
     const goodCookie = cookie.token !== undefined && cookie.username !== undefined
-    if (!goodCookie) {
+    if (!isPublic && !goodCookie) {
         throw new Error("No token in cookie")
     }
 
@@ -23,7 +23,7 @@ export default async function Header({ isPublic = true, ...props }) {
                     <div className='topnav_private'>
                         <div>|</div>
                         <div className="topnav_links">
-                            <SimpleLink text="Repositories" href={"/" + cookie.username.value + "/repo"} />
+                            <SimpleLink text="Repositories" href={"/" + cookie.username.value + "/repositories/"} />
                         </div>
                     </div>
                 )}
