@@ -17,24 +17,24 @@ export default async function Header({ isPublic = true, ...props }) {
         <div className={styles.topnav}>
             <div className={styles.topnavLeft}>
                 <div className="bold">
-                    <SimpleLink text="Repomanager" href="/" />
+                    <SimpleLink href="/">Repomanager</SimpleLink>
                 </div>
                 {!isPublic && goodCookie && (
                     <div className={styles.topnavPrivate}>
                         <div>|</div>
                         <div className="topnav_links">
-                            <SimpleLink text="Repositories" href={"/" + cookie.username.value + "/repositories/"} />
+                            <SimpleLink href={"/" + cookie.username.value + "/repositories/"}>Repositories</SimpleLink>
                         </div>
                     </div>
                 )}
 
             </div>
             <div className={styles.topnavRight}>
-                <SimpleLink text="About" href="/about" />
+                <SimpleLink text="About" href="/about" >About</SimpleLink>
                 {!isPublic ? (
-                    <SimpleLink text="Logout" href="/" handleClick={delete_login_cookie} />
+                    <SimpleLink href="/" handleClick={delete_login_cookie} >Logout</SimpleLink>
                 ) : (
-                    <SimpleLink text="Login" href="/login" />
+                    <SimpleLink text="Login" href="/login">Login</SimpleLink>
                 )}
             </div>
         </div>

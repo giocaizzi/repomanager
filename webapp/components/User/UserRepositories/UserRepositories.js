@@ -9,7 +9,7 @@ export default function UserRepositories({ repositories }) {
                 There are {repositories.length} repositories available for this user.
             </div>
             <ul>
-                {repositories.map(repo => <li><b><SimpleLink text={repo.name} href={"/" + repo.owner + "/repositories/" + repo.name} /></b>: {repo.description && repo.description} </li>)}
+                {repositories.map(repo => <li><b><SimpleLink href={"/" + repo.owner + "/repositories/" + repo.name}>{repo.name}</SimpleLink></b>: {repo.description && repo.description} </li>)}
             </ul>
         </div>
     );
