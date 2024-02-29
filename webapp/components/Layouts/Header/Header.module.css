@@ -14,17 +14,19 @@
 
 }
 
-.topnav_left {
+.topnavLeft {
     display: flex;
     gap: 5px;
 }
 
 
-.topnav_right {
+.topnavRight {
+    display: flex;
     margin-left: auto;
+    gap: 10px;
   }
 
-.topnav_private {
+.topnavPrivate {
     display: flex;
     gap: 5px;
     align-items: center;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { delete_login_cookie, get_login_cookie } from '@/lib/cookies';
 
-import './Header.css';
+import styles from './Header.module.css';
 
 export default async function Header({ isPublic = true, ...props }) {
 
@@ -14,13 +14,13 @@ export default async function Header({ isPublic = true, ...props }) {
     }
 
     return (
-        <div className="topnav">
-            <div className="topnav_left">
-                <div className="topnav_logo bold">
+        <div className={styles.topnav}>
+            <div className={styles.topnavLeft}>
+                <div className="bold">
                     <SimpleLink text="Repomanager" href="/" />
                 </div>
                 {!isPublic && goodCookie && (
-                    <div className='topnav_private'>
+                    <div className={styles.topnavPrivate}>
                         <div>|</div>
                         <div className="topnav_links">
                             <SimpleLink text="Repositories" href={"/" + cookie.username.value + "/repositories/"} />
@@ -29,7 +29,8 @@ export default async function Header({ isPublic = true, ...props }) {
                 )}
 
             </div>
-            <div className="topnav_right">
+            <div className={styles.topnavRight}>
+                <SimpleLink text="About" href="/about" />
                 {!isPublic ? (
                     <SimpleLink text="Logout" href="/" handleClick={delete_login_cookie} />
                 ) : (
