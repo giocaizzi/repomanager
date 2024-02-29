@@ -1,0 +1,84 @@
+/* BASE.HTML STYLES */
+
+/* Style for the body element */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  font-family: Arial;
+}
+
+/* Style for the top navigation bar */
+.topnav,
+.footer {
+  display:flex;
+  overflow: hidden;
+  display: flex;
+  height: 40px;
+  position: relative;
+  width: 100%;
+  /* border: 2px solid #ff00d0; */
+
+}
+
+.topnav {
+  background-color: #000000;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+}
+
+.footer {
+  background-color: rgb(190, 190, 190);
+  justify-content: center;
+  align-items: center;
+  min-height: 30px;
+  flex-direction: column;
+}
+
+.copyright p{
+  font-size: x-small;
+  margin: 2px;
+}
+
+.footerlinks a{
+  font-size: small;
+}
+
+/* Style for the links in the top navigation bar */
+.topnav a {
+  color: #f2f2f2;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: medium;
+}
+
+.topnav a.home {
+  font-weight: bold;
+  font-size: large;
+}
+
+.topnav_right {
+  margin-left: auto;
+}
+
+/* Style for the main content section */
+.main {
+  width: 80%;
+  position: relative;
+  padding-top: 16px;
+  padding-bottom: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  min-height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid #40ff00; */
+  align-items: flex-start;
+}
+
+.main.centered {
+  align-items: center;
+}

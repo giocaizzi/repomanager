@@ -1,0 +1,33 @@
+/* Style for the top navigation bar */
+.topnav {
+    /* size and position */
+    height: 40px;
+    position: relative;
+    padding : 0px 20px;
+    /* flex */
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    /* style */
+    /* border: 2px solid #ff00d0; */
+    background-color: var(--background-color);
+
+}
+
+.topnavLeft {
+    display: flex;
+    gap: 5px;
+}
+
+
+.topnavRight {
+    display: flex;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+.topnavPrivate {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
