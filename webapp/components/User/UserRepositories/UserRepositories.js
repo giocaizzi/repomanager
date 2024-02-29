@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import SimpleLink from '@/components/SimpleLink/SimpleLink';
 
 export default function UserRepositories({ repositories }) {
     return (
@@ -8,7 +9,7 @@ export default function UserRepositories({ repositories }) {
                 There are {repositories.length} repositories available for this user.
             </div>
             <ul>
-                {repositories.map(repo => <li><b>{repo.name}</b>: {repo.description && repo.description} </li>)}
+                {repositories.map(repo => <li><b><SimpleLink text={repo.name} href={"/" + repo.owner + "/repositories/" + repo.name} /></b>: {repo.description && repo.description} </li>)}
             </ul>
         </div>
     );

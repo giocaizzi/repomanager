@@ -77,7 +77,11 @@ class User(GitHubAPI):
             "html_url": self.html_url,
             "avatar_url": self.avatar_url,
             "repositories": [
-                {"name": repo.name, "description": repo.description}
+                {
+                    "name": repo.name,
+                    "description": repo.description,
+                    "owner": repo.owner,
+                }
                 for repo in self.repos
             ],
         }

@@ -26,10 +26,11 @@ def repos(current_user, username):
     return jsonify([repo.to_json() for repo in user.repos])
 
 
-# @user_blueprint.route("/<username>/repos/<repo_name>/")
-# def repo(username, repo_name):
-#     # Repository page
-#     repo = _login(
-#         session["login_type"], session["login_input"]
-#     ).get_respository(repo_name)
-#     return render_template("repo.html", repo=repo)
+@user_blueprint.route("/<username>/repositories/<repo_name>/")
+@token_required
+def repo(current_user, username, repo_name):
+    # Repository page
+    repo = _login(
+        current_user["login_type"], current_user["login_input"]
+    ).get_respository(repo_name)
+    return jsonify({"message": "repo page"})
