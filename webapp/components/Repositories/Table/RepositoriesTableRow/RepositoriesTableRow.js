@@ -1,4 +1,5 @@
 import RepositoriesTableRowCell from '@/components/Repositories/Table/RepositoriesTableRowCell/RepositoriesTableRowCell';
+import SimpleLink from '@/components/SimpleLink/SimpleLink';
 import BaseIcon from '@/components/Icons/BaseIcon/BaseIcon';
 import LanguageIcon from '@/components/Icons/LanguageIcon/LanguageIcon';
 import BooleanIcon from '@/components/Icons/BooleanIcon/BooleanIcon';
@@ -7,21 +8,26 @@ import styles from './RepositoriesTableRow.module.css';
 
 export default function RepositoriesTableRow({
     url,
-    name ,
+    name,
     description,
     isPrivate,
     language,
     stars,
     pages,
+    owner
 }) {
     return (
         <>
             <tr key={name} className={styles.tr}>
-                < RepositoriesTableRowCell centered={true} link={url}>
-                    <BaseIcon src="/github.png" alt="Github link" />
+                < RepositoriesTableRowCell centered={true}>
+                    <SimpleLink href={url} >
+                        <BaseIcon src="/github.png" alt="Github link" />
+                    </SimpleLink>
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell>
-                    {name}
+                    <SimpleLink href={"/" + owner + "/repositories/" + name}>
+                        {name}
+                    </SimpleLink>
                 </RepositoriesTableRowCell>
                 <RepositoriesTableRowCell>
                     {description}
