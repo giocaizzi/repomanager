@@ -1,27 +1,30 @@
 import PropTypes from 'prop-types';
+import styles from './Repository.module.css';
 
-export default function Repository({props}) {
+export default function Repository({ props}) {
     return (
-        <div>
+        <div className={styles.repository}>
             <table>
-                <tr>
+                <tbody>
                     {
-                        Object.keys(props).map((key) => {
-                            <>
-                                <th>{key}Ciao</th>
-                                <td>
-                                    {props[key]}
-                                </td>
-                            </>
+                        // table row with key-value pairs
+                        Object.entries(props).map(([key, value]) => {
+                            return (
+                                <tr className={styles.tableRow}>
+                                    <td className='bold'>{key}</td>
+                                    <td>{value}</td>
+                                </tr>
+                            )
                         })
                     }
-                </tr>
+                </tbody>
             </table>
-        </div>
+        </div >
     );
 }
 
 Repository.propTypes = {
-    props: PropTypes.object
+    // props is an object with key-value pairs
+    props: PropTypes.object.isRequired
 };
 

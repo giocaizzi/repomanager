@@ -3,21 +3,58 @@ import Repository from './Repository';
 export default {
     title: 'Repository',
     component: Repository,
-};
-
-export const Default = {}
-
-export const WithData = {
     args: {
         props: {
-            description: null,
-            fork: false,
-            language: "Jupyter Notebook",
-            name: "aecom_3dmodels",
-            pages: false,
-            private: true,
-            stars: 0,
-            url: "https://github.com/giocaizzi/aecom_3dmodels"
+            name: "name",
+            description: "description",
+            url: "url",
+        }
+
+    }
+};
+
+export const Short = {
+}
+
+export const Long = {
+    args: {
+        props: {
+            name: "name",
+            description: "description",
+            url: "url",
+            forks: "forks",
+            stars: "stars",
+            language: "language",
+            license: "license",
+            updated: "updated",
+        }
+    }
+}
+
+export const ReallyLong = {
+    args: {
+        props:
+        {
+            name: "name",
+            description: "description",
+            url: "url",
+            forks: "forks",
+            stars: "stars",
+            language: "language",
+            license: "license",
+            updated: "updated",
+            issues: "issues",
+            pullRequests: "pullRequests",
+            releases: "releases",
+            contributors: "contributors",
+            commits: "commits",
+            branches: "branches",
+            tags: "tags",
+            createdAt: "createdAt",
+            updatedAt: "updatedAt",
+            pushedAt: "pushedAt",
+            homepageUrl: "homepageUrl",
+            openGraphImageUrl: "openGraphImageUrl",
         }
     }
 }
