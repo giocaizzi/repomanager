@@ -1,7 +1,7 @@
 import RepositoriesTableRow from './RepositoriesTableRow';
 
 export default {
-    title: 'Repositories/RepositoriesTableRow',
+    title: 'Repositories/Table/RepositoriesTableRow',
     component: RepositoriesTableRow,
     args : {
         url: '/repo',

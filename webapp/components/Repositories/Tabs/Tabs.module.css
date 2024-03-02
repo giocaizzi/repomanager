@@ -1,32 +1,36 @@
     
     /* tabs */
 
-    .tab-selector {
+    .tabSelector {
         background-color: #9d9d9d;
         border: 1px solid #b2b2b2;
 
     }
 
-    .tab-container {
+    .tabContainer {
         padding : 5px;
         padding-left : 15px;
         background-color: #f2f2f2;
         border: 1px solid #b2b2b2;
 
     }
+
+    .tabcontent {
+        
+    }
     
     
     /* filters */
 
     /* Add styles for the filter buttons */
-    .selection-container {
+    .selectionContainer {
         display: flex;
         justify-content: center;
         margin-bottom: 10px;
     }
 
     /* Add styles for the filter input */
-    .filtercontainer {
+    .filterContainer {
         display: flex;
         justify-content: center;
         margin-bottom: 10px;
@@ -35,7 +39,7 @@
 
     }
 
-    .filtercontainer label {
+    .filterContainer label {
         margin-right: 10px;
         font-size: small;
     }

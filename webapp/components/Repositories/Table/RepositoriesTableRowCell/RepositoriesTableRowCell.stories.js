@@ -1,7 +1,7 @@
 import RepositoriesTableRowCell from "./RepositoriesTableRowCell";
 
 export default {
-    title: "Repositories/RepositoriesTableRowCell",
+    title: "Repositories/Table/RepositoriesTableRowCell",
     component: RepositoriesTableRowCell,
     args :{
         children: "Hello"
