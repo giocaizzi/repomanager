@@ -3,7 +3,8 @@
 import RadioInput from '@/components/Form/Inputs/RadioInput/RadioInput';
 import TextInput from '@/components/Form/Inputs/TextInput/TextInput';
 import { useState } from 'react';
-import './Form.css';
+import styles from './Form.module.css';
+
 import { useRouter } from 'next/navigation'
 
 import { fetchData} from '@/lib/fetch';
@@ -22,23 +23,22 @@ export default function Form({}) {
             login_input: event.target.login_input.value
         }
         const data = await fetchData("/auth/", "POST", body)
-        console.log(data)
-        setIsLoading(false)
         if ("error" in data) {
             setErrorMessage(data.error)
         }
         else{
             await create_login_cookie(data)
+            setIsLoading(false)
             router.push('/'+ data.username)
         }
 
     }
  
     return (
-        <div className="form-login">
+        <div className={styles.formLogin}>
             <h2>Log in with GitHub</h2>
             <p>Select how you want to log in:</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <div className='radios'>
                     <RadioInput label="Token" id="token" name="login_type" value="token" checked={true}></RadioInput>
                     <RadioInput label="Username" id="username" name="login_type" value="username"></RadioInput>

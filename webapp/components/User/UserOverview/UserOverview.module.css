@@ -2,32 +2,15 @@
 .overview {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    gap: 20px;
+    /* shape */
+    padding : 20px;
+    border: 2px solid var(--primary-color);
+    width: 500px;
+    background-color: var(--primary-color-light);
+    border-radius: 10px;
 }
 
-.login {
-    display: flex;
-    padding: 20px;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    width: fit-content;
-    margin: auto;
-    border: 1px solid #b2b2b2;
-}
-
-.login h2 {
-    margin: 0px;
-}
-
-.login form {
-    padding: 10px;
-}
-
-.avatar {
-    display: flex;
-}
 
 .userinfo {
     display: flex;
