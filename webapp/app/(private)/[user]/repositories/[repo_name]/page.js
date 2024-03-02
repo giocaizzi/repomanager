@@ -8,7 +8,7 @@ export default async function RepositoryPage({params})  {
     return (
         <div>
             <h1>{params.repo_name}</h1>
-            <DebugComponent data={data} />
+            {/* <DebugComponent data={data} /> */}
             <Repository props={data} />
         </div>
     );

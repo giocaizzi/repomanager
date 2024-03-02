@@ -8,11 +8,8 @@
 }
 
 .repository {
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
     min-width: 100px;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
+     max-width: 300px;
+     /*  border-radius: 10px; */
 }
