@@ -9,9 +9,12 @@
     opacity: 0.8;
 }
 
+/* primary */
+
 .primary {
     background-color: var(--background-color);
     border: 2px solid var(--primary-color);
+    /* text */
     color : var(--primary-color);
 }
 
@@ -20,13 +23,34 @@
     color: var(--background-color);
 }
 
+.primary.clicked {
+    background-color: var(--primary-color-dark);
+    color: var(--background-color);
+}
+
+/* primary alt */
+
+.primaryAlt{
+    background-color: var(--primary-color);
+    border : 3px solid var(--primary-color-light);
+    color : var(--text-color);
+}
+
+/* secondary */
+
 .secondary {
     background-color: var(--background-color);
     border: 2px solid var(--secondary-color);
     color: var(--secondary-color);
 }
 
+
 .secondary:hover {
     background-color: var(--secondary-color);
+    color: var(--background-color);
+}
+
+.secondary.clicked {
+    background-color: var(--secondary-color-dark);
     color: var(--background-color);
 }

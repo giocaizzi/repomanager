@@ -11,6 +11,12 @@ export default {
 
 export const Default = {};
 
+export const primaryAlt = {
+    args: {
+        type: "primary-alt"
+    }
+};
+
 export const secondary = {
     args: {
         type: "secondary"

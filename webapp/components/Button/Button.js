@@ -1,15 +1,30 @@
-import styles from './Button.module.css'
+import { useState } from 'react'
+
 import SimpleLink from '../SimpleLink/SimpleLink'
+import styles from './Button.module.css'
 
 import PropTypes from 'prop-types'
 
 export default function Button({ type = "primary", text }) {
-    const className = type === "primary" ?
-        `${styles.button} ${styles.primary}` :
-        `${styles.button} ${styles.secondary}`
+    const [clicked, setClicked] = useState(false);
+
+    let buttonType;
+    switch (type) {
+        case "primary":
+            buttonType = styles.primary;
+            break;
+        case "primary-alt":
+            buttonType = styles.primaryAlt;
+            break;
+        case "secondary":
+            buttonType = styles.secondary;
+            break;
+    }
+
+    const isClicked  = clicked ? styles.clicked : ""
     return (
         <>
-            <button className={className}>
+            <button className={`${styles.button} ${buttonType} ${isClicked}`} onClick={() => { setClicked(true) }}>
                 {text}
             </button>
         </>
@@ -18,7 +33,7 @@ export default function Button({ type = "primary", text }) {
 
 Button.propTypes = {
     /** type */
-    type: PropTypes.oneOf(['primary', 'secondary']),
+    type: PropTypes.oneOf(['primary', 'primary-alt','secondary']),
     /** text */
     text: PropTypes.string
 }

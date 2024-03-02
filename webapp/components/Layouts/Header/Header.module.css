@@ -17,12 +17,14 @@
 .topnavLeft {
     display: flex;
     gap: 5px;
+    align-items: center;
 }
 
 
 .topnavRight {
     display: flex;
     margin-left: auto;
+    align-items: center;
     gap: 10px;
   }
 
