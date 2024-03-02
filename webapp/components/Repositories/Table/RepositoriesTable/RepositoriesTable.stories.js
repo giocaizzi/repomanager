@@ -42,12 +42,12 @@ export default {
 }
 
 export const Default = {
-    args : {
-    repositories: [],
-    }
 }
 
-export const WithData = {
+export const NoData = {
+    args : {
+        repositories: [],
+        }
 }
 
 

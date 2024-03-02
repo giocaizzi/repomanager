@@ -1,7 +1,7 @@
 import Repository from './Repository';
 
 export default {
-    title: 'Repository',
+    title: 'Repository/Repository',
     component: Repository,
     args: {
         props: {

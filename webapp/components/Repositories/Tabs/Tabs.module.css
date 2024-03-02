@@ -1,5 +1,8 @@
     
     /* tabs */
+    .tabs{
+        width: 500px;
+    }
 
     .tabSelector {
         background-color: var(--primary-color);

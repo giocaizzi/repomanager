@@ -4,15 +4,15 @@ import styles from './Repository.module.css';
 export default function Repository({ props}) {
     return (
         <div className={styles.repository}>
-            <table>
+            <table className={styles.table}>
                 <tbody>
                     {
                         // table row with key-value pairs
                         Object.entries(props).map(([key, value]) => {
                             return (
                                 <tr className={styles.tableRow}>
-                                    <td className='bold'>{key}</td>
-                                    <td>{value}</td>
+                                    <td className={`bold ${styles.tableCell}`}>{key}</td>
+                                    <td className={styles.tableCell}>{value}</td>
                                 </tr>
                             )
                         })

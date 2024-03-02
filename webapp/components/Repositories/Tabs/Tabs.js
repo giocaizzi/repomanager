@@ -45,7 +45,7 @@ export default function Tabs({ children }) {
   }
 
   return (
-    <>
+    <div className={styles.tabs}>
       <div class={styles.tabSelector}>
         <button class="tabbutton" onclick={() => { openTab("simple") }}>Simple Filter</button>
         <button class="tabbutton" onclick={() => { openTab("advanced") }}>Advanced Filter</button>
@@ -68,6 +68,6 @@ export default function Tabs({ children }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
