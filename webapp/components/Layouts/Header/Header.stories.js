@@ -7,8 +7,18 @@ export default {
     component: Header,
 };
 
-export const Default = () => (
-    <Suspense>
-        <Header />
-    </Suspense>
-);
+export const Default = {
+    render : () => (
+        <Suspense>
+            <Header />
+        </Suspense>
+    )
+};
+
+// export const Private = {
+//     render : () => (
+//         <Suspense>
+//             <Header isPublic={false} />
+//         </Suspense>
+//     )
+// };

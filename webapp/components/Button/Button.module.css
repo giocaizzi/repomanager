@@ -32,8 +32,13 @@
 
 .primaryAlt{
     background-color: var(--primary-color);
-    border : 3px solid var(--primary-color-light);
+    border : 2px solid var(--primary-color-light);
     color : var(--text-color);
+}
+
+.primaryAlt:hover {
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 /* secondary */
