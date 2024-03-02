@@ -1,0 +1,8 @@
+.textInput{
+    display: flex;
+    gap : 5px;
+}
+
+.textInput:focus{
+    border-color: var(--secondary-color);
+}

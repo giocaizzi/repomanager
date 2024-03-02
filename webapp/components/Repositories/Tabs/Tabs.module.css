@@ -2,23 +2,19 @@
     /* tabs */
 
     .tabSelector {
-        background-color: #9d9d9d;
-        border: 1px solid #b2b2b2;
-
+        background-color: var(--primary-color);
+        padding: 10px;
+        display: flex;
+        gap : 20px;
     }
 
     .tabContainer {
         padding : 5px;
         padding-left : 15px;
-        background-color: #f2f2f2;
-        border: 1px solid #b2b2b2;
+        background-color: var(--primary-color-light);
+        border: 1px solid var(--primary-color);
 
     }
-
-    .tabcontent {
-        
-    }
-    
     
     /* filters */
 
@@ -35,8 +31,7 @@
         justify-content: center;
         margin-bottom: 10px;
         text-align: center;
-        border: 2px #b2b2b2;
-
+        border : 1px solid var(--primary-color);
     }
 
     .filterContainer label {

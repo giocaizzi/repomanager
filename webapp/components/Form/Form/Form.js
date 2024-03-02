@@ -43,7 +43,7 @@ export default function Form({}) {
                     <RadioInput label="Token" id="token" name="login_type" value="token" checked={true}></RadioInput>
                     <RadioInput label="Username" id="username" name="login_type" value="username"></RadioInput>
                 </div>
-                <TextInput id="login_input" name="login_input" placeholder="token or username"></TextInput>
+                <TextInput id="login_input" name="login_input" labelText="Enter login information:" placeholder="token or username"></TextInput>
                 {isLoading && <p>Loading...</p>}
                 {errorMessage && <div className='text-error'><p>{errorMessage}</p></div>}
                 <input type="submit" value="Login"></input>
