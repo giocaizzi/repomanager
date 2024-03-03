@@ -1,9 +1,8 @@
 /* tables */
 .table {
-    margin-left: auto;
-    margin-right: auto;
     /* remove borders */
     border-collapse: collapse;
+    min-width: 600px;
 }
 
 .th {
