@@ -14,4 +14,5 @@ jobs:
         subdir : repomanager
         python-version: "3.10"
         python-tested-versions: "['3.10','3.11','3.12']"
+        python-package-type: "pyproject.toml"
       
