@@ -1,15 +1,18 @@
 import pytest
-from flask import session
 
-import os
+from importlib import metadata
 
-TEST_USER = "testuser"
-
+TEST_USERNAME = "testuser"
 
 # -------- PUBLIC VIEWS --------
 
 
-def test_home_page(client):
-    response = client.get("/")
-    # show home page if not logged in
+def test_home_page(client, test_request):
+    response, data = test_request("/")
     assert response.status_code == 200
+    assert response.status_code == 200
+    assert data["message"] == "Welcome to the Repomanager API"
+    assert data["version"] == metadata.metadata("repomanager")["version"]
+
+
+# -------- USER VIEWS --------

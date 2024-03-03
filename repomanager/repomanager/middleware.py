@@ -4,6 +4,19 @@ from flask import request, current_app, jsonify
 
 
 def token_required(f):
+    """require a token to be passed in the request header
+
+    This decorator is used to require a token to be passed in the request header
+    to access the route. It also decodes the token and returns the current user
+    context to the route.
+
+    Args:
+        f (func): function to wrap `token_required` around
+
+    Returns:
+        func: decorated function
+    """
+
     @wraps(f)
     def decorated(*args, **kwargs):
         token = None
@@ -16,9 +29,11 @@ def token_required(f):
                     return (
                         jsonify(
                             {
-                                "message": "Invalid Authorization type."
-                                / " Must be in form of"
-                                / " `Authorization: Bearer XXXXX`"
+                                "message": (
+                                    "Invalid Authorization type."
+                                    " Must be in form of"
+                                    " `Authorization: Bearer XXXXX`"
+                                )
                             }
                         ),
                         401,
@@ -29,16 +44,18 @@ def token_required(f):
                 return (
                     jsonify(
                         {
-                            "message": "Invalid token specification."
-                            / " Must be in form of"
-                            / " `Authorization: Bearer XXXXX`"
+                            "message": (
+                                "Invalid token specification."
+                                " Must be in form of"
+                                " `Authorization: Bearer XXXXX`"
+                            )
                         }
                     ),
                     401,
                 )
         # return 401 if token is not passed
         if not token:
-            return jsonify({"message": "Token is missing !!"}), 401
+            return jsonify({"message": "Token is missing!"}), 401
 
         try:
             # decoding the payload to fetch the stored details
