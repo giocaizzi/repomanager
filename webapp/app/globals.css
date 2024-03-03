@@ -3,7 +3,7 @@
 @tailwind utilities; */
 
 :root {
-  --background-color: #ffffff;
+  --background-color: #0bc9ef;
   --primary-color: #3084b1;
   --primary-color-light: rgb(218, 244, 255);
   --primary-color-dark: #1c6a8c;
@@ -23,7 +23,6 @@
 /*  HTML tags */
 
 body {
-  background-color: var(--background-color);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
   /* overflow: hidden; */
@@ -43,8 +42,11 @@ a:hover {
 main {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  /* size */
+  padding: 25px 50px;
   height: 100vh;
+  /* color */
+  background-color: white;
 }
 
 /* CUSTOM CLASSES */

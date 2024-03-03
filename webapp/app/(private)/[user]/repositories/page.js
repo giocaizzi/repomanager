@@ -1,5 +1,4 @@
-import RepositoriesTable from "@/components/Repositories/Table/RepositoriesTable/RepositoriesTable"
-import DebugComponent from "@/components/Utils/DebugComponent"
+import Repositories from "@/components/Repositories/Repositories/Repositories"
 import { fetchData } from "@/lib/fetch"
 
 export default async function UserRepo({ params }) {
@@ -7,8 +6,7 @@ export default async function UserRepo({ params }) {
     return (
         <div>
             <h1>Repositories</h1>
-            {/* <DebugComponent data={data} /> */}
-            <RepositoriesTable repositories={data}/>
+            <Repositories repositories={data}/>
         </div>
     )
 }

@@ -12,7 +12,7 @@
 /* primary */
 
 .primary {
-    background-color: var(--background-color);
+    background-color: var(--primary-color-light);
     border: 2px solid var(--primary-color);
     /* text */
     color : var(--primary-color);
@@ -20,12 +20,12 @@
 
 .primary:hover {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: var(--text-color-opp);
 }
 
 .primary.clicked {
     background-color: var(--primary-color-dark);
-    color: var(--background-color);
+    color: var(--text-color-opp);
 }
 
 /* primary alt */
@@ -37,14 +37,14 @@
 }
 
 .primaryAlt:hover {
-    background-color: var(--background-color);
+    background-color: var(--primary-color-light);
     color: var(--text-color);
 }
 
 /* secondary */
 
 .secondary {
-    background-color: var(--background-color);
+    background-color: var(--primary-color-light);
     border: 2px solid var(--secondary-color);
     color: var(--secondary-color);
 }
@@ -52,10 +52,10 @@
 
 .secondary:hover {
     background-color: var(--secondary-color);
-    color: var(--background-color);
+    color: var(--text-color-opp);
 }
 
 .secondary.clicked {
     background-color: var(--secondary-color-dark);
-    color: var(--background-color);
+    color: var(--text-color-opp);
 }
