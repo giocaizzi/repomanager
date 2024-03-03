@@ -1,7 +1,7 @@
 import pytest
 import os
 
-from repomanager import create_app
+from repomanager.app import create_app
 
 
 @pytest.fixture()
