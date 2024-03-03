@@ -39,7 +39,7 @@ def logged_in_client(test_app: pytest.fixture):
         {
             "login_input": "test_login_input",
             "login_type": "test_login_type",
-            "exp": dt.datetime.now(dt.UTC) + dt.timedelta(minutes=30),
+            "exp": dt.datetime.utcnow() + dt.timedelta(minutes=30),
         },
         "pytest",
     )
