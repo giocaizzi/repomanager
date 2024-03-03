@@ -10,5 +10,5 @@ jobs:
   deploy-macos:
     uses: giocaizzi/python-dev-actions/.github/workflows/deployment.yml@toml
     with:
-        subdir : "repomanager"
+        subdir : "./repomanager"
       
