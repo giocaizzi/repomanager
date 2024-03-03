@@ -1,5 +1,5 @@
 import RepositoriesTable from '@/components/Repositories/Table/RepositoriesTable/RepositoriesTable'
-import Tabs from '@/components/Repositories/Tabs/Tabs'
+import Tabs from '@/components/Repositories/Tabs/Tabs/Tabs'
 import styles from './Repositories.module.css'
 import PropTypes from 'prop-types'
 

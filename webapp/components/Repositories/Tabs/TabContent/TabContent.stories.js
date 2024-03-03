@@ -1,7 +1,7 @@
 import TabContent from "./TabContent";
 
 export default {
-    title: "Repositories/TabContent",
+    title: "Repositories/Tabs/TabContent",
     component: TabContent,
 };
 

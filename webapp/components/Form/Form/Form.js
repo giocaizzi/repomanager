@@ -2,6 +2,8 @@
 
 import RadioInput from '@/components/Form/Inputs/RadioInput/RadioInput';
 import TextInput from '@/components/Form/Inputs/TextInput/TextInput';
+import Button from '@/components/Button/Button';
+
 import { useState } from 'react';
 import styles from './Form.module.css';
 
@@ -46,7 +48,7 @@ export default function Form({}) {
                 <TextInput id="login_input" name="login_input" labelText="Enter login information:" placeholder="token or username"></TextInput>
                 {isLoading && <p>Loading...</p>}
                 {errorMessage && <div className='text-error'><p>{errorMessage}</p></div>}
-                <input type="submit" value="Login"></input>
+                <Button type="primary" text="Login" HTMLType="submit"/>
             </form>
         </div>
     );

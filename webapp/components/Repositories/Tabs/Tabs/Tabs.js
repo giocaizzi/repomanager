@@ -1,6 +1,6 @@
 'use client';
 
-import TabContent from '@/components/Repositories/TabContent/TabContent';
+import TabContent from '@/components/Repositories/Tabs/TabContent/TabContent';
 
 import styles from './Tabs.module.css';
 import { useState } from 'react';
