@@ -1,11 +1,10 @@
-import RepositoriesTable from "./RepositoriesTable";
-
+import Repositories from "./Repositories";
 
 export default {
-    title: "Repositories/Table/RepositoriesTable",
-    component: RepositoriesTable,
+    title: "Repositories/Repositories",
+    component: Repositories,
     args: {
-        repositories : [
+        repositories: [
             {
                 name: "repo1",
                 description: "description1",
@@ -13,8 +12,8 @@ export default {
                 language: "JavaScript",
                 stars: 0,
                 pages: false,
-                owner : "owner",
-                url : "/repo1"
+                owner: "owner",
+                url: "/repo1"
             },
             {
                 name: "repo2",
@@ -23,8 +22,8 @@ export default {
                 language: "Java",
                 stars: 20,
                 pages: true,
-                owner : "owner",
-                url : "/repo2"
+                owner: "owner",
+                url: "/repo2"
             },
             {
                 name: "repo3",
@@ -33,21 +32,12 @@ export default {
                 language: "Python",
                 stars: 30,
                 pages: false,
-                owner : "owner",
-                url : "/repo3"
+                owner: "owner",
+                url: "/repo3"
 
             }
         ]
     }
-}
+};
 
-export const Default = {
-}
-
-export const NoData = {
-    args : {
-        repositories: [],
-        }
-}
-
-
+export const Default = {}

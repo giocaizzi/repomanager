@@ -1,0 +1,9 @@
+.radioInput{
+    display: flex;
+    gap : 3px;
+    accent-color: var(--primary-color);
+}
+
+.radioInput:hover{
+    accent-color: var(--primary-color-dark);
+}

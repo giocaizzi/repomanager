@@ -1,0 +1,12 @@
+.tabContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.tabContent p{
+    padding: 0px;
+    margin: 0px;
+}

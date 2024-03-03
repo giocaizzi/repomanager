@@ -1,15 +1,12 @@
 /* tables */
 .table {
-    margin-left: auto;
-    margin-right: auto;
+    /* remove borders */
     border-collapse: collapse;
-    width: 100%;
+    min-width: 600px;
 }
 
 .th {
-    background-color: #9d9d9d;
+    background-color: var(--primary-color);
     color: rgb(0, 0, 0);
-    border: 1px solid #b2b2b2;
     text-align: left;
-    padding: 8px;
 }

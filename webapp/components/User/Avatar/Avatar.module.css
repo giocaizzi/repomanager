@@ -1,0 +1,15 @@
+.avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 100px;
+    width : 100px;
+    display: flex;
+}
+
+.img {
+    /* display: inline; */
+    /* margin: 0 auto; */
+    height: 100%;
+    width: auto;
+  }
+  

@@ -1,7 +1,7 @@
 import RepositoriesTableRowCell from "./RepositoriesTableRowCell";
 
 export default {
-    title: "Repositories/RepositoriesTableRowCell",
+    title: "Repositories/Table/RepositoriesTableRowCell",
     component: RepositoriesTableRowCell,
     args :{
         children: "Hello"
@@ -13,21 +13,9 @@ export default {
 
 export const Default = {}
 
-export const TextLink = {
-    args: {
-        link: "/"
-    }
-}
 
 export const TextCentered = {
     args: {
-        centered: true
-    }
-}
-
-export const TextLinkCentered = {
-    args: {
-        link: "/",
         centered: true
     }
 }

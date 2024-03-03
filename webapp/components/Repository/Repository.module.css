@@ -1,0 +1,24 @@
+.repository {
+    /* shape */
+    background-color: var(--primary-color-light);
+    border : 2px solid var(--primary-color);
+    border-radius: 10px;
+    width : 250px;
+    /* flex */
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tableRow {
+    /* flex */
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    /* shape and color */
+    border-bottom: 1px solid var(--primary-color-dark);
+}
+
+.tableCell {
+    max-width: 100px;
+}

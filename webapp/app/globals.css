@@ -3,8 +3,13 @@
 @tailwind utilities; */
 
 :root {
-  --background-color: #757575;
+  --background-color: #0bc9ef;
+  --primary-color: #3084b1;
+  --primary-color-light: rgb(218, 244, 255);
+  --primary-color-dark: #1c6a8c;
+  --secondary-color: #ba8500;
   --text-color: #000000;
+  --text-color-opp : #ffffff;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -23,7 +28,7 @@ body {
   /* overflow: hidden; */
 }
 
-a {
+a, a:link, a:visited, a:focus, a:hover, a:active{
   color: var(--text-color);
   /* no underline */
   text-decoration: none;
@@ -37,8 +42,11 @@ a:hover {
 main {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  /* size */
+  padding: 25px 50px;
   height: 100vh;
+  /* color */
+  background-color: white;
 }
 
 /* CUSTOM CLASSES */

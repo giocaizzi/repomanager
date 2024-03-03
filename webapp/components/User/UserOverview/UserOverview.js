@@ -1,19 +1,19 @@
-import PropTypes from 'prop-types';
+import Avatar from '@/components/User/Avatar/Avatar';
 import styles from './UserOverview.module.css';
+import PropTypes from 'prop-types';
 
 
-export default function UserOverview({ name, login, avatar_url}) {
+
+export default function UserOverview({ name, login, avatar_url }) {
     return (
-        <div class={styles.overview}>
-            <div class={styles.avatar}>
-                <img src={avatar_url} height="100" />
-            </div>
-            <div class={styles.userinfo}>
+        <div className={styles.overview}>
+            <Avatar avatar_url={avatar_url} />
+            <div className={styles.userinfo}>
                 <h2>{login}</h2>
                 <p>
                     This is the repository manager of <em>{name}</em>, aka <b>{login}</b>.
                 </p>
-                <a href="">Visit {login} on GitHub</a>
+                <a href={"https://github.com/" + login}>Visit {login} on GitHub</a>
             </div>
         </div>
     );

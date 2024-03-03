@@ -24,6 +24,8 @@ export default function RepositoriesTable({ repositories }) {
                     {
                         repositories.map((repository, index) =>
                             <RepositoriesTableRow
+                                url={repository.url}
+                                owner={repository.owner}
                                 name={repository.name}
                                 description={repository.description}
                                 isPrivate={repository.private}

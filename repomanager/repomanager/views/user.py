@@ -33,4 +33,4 @@ def repo(current_user, username, repo_name):
     repo = _login(
         current_user["login_type"], current_user["login_input"]
     ).get_respository(repo_name)
-    return jsonify({"message": "repo page"})
+    return jsonify(repo.to_json())
