@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy-macos:
+  deploy:
     uses: giocaizzi/python-dev-actions/.github/workflows/deployment.yml@toml
     with:
         subdir : repomanager
