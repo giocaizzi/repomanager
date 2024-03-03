@@ -1,9 +1,13 @@
 'use client';
 
+import TabContent from '@/components/Repositories/TabContent/TabContent';
+
 import styles from './Tabs.module.css';
+import { useState } from 'react';
 
 
-export default function Tabs({ children }) {
+export default function Tabs({ }) {
+  const [activeTab, setActiveTab] = useState("simple");
 
   // Function to filter the table by name
   function filterByName() {
@@ -29,44 +33,34 @@ export default function Tabs({ children }) {
     }
   }
 
-  // function open tabs
-  function openTab(evt, tabName) {
-    var i, x, tablinks;
-    x = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tabbutton");
-    for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-
   return (
     <div className={styles.tabs}>
-      <div class={styles.tabSelector}>
-        <button class="tabbutton" onclick={() => { openTab("simple") }}>Simple Filter</button>
-        <button class="tabbutton" onclick={() => { openTab("advanced") }}>Advanced Filter</button>
+      <div className={styles.tabSelector}>
+        <button className={styles.tabButton} onClick={() => { setActiveTab("simple") }}>Simple Filter</button>
+        <button className={styles.tabButton} onClick={() => { setActiveTab("advanced") }}>Advanced Filter</button>
       </div>
-      <div class={styles.tabContainer}>
-        <div class="tabcontent" id="simple">
-          <div class="filtercontainer">
-            <label for="myInput">Filter by name:</label>
-            <input type="text" id="myInput" onkeyup={() => {filterByName()}} placeholder="repository name"></input>
-          </div>
-        </div>
-        <div>
-          {/* <div class="tabcontent" id="advanced" style="display:none"> */}
-          <div class="tabcontent" id="advanced">
-            <div class={styles.filterContainer}>
-              <label for="advancedInput">Advanced Filter:</label>
-              <input type="text" id="advancedInput" onkeyup="filterByAdvanced()"
-                placeholder="filter by name, language, stars, etc."></input>
+      <div className={styles.tabContainer}>
+        {activeTab === "simple" ?
+          <TabContent id="simple">
+            <div className={styles.filterContainer}>
+              <label for="myInput">Filter by name:</label>
+              <input type="text" id="myInput" onKeyUp={() => { filterByName() }} placeholder="repository name"></input>
             </div>
-          </div>
-        </div>
+          </TabContent>
+          : 
+          <TabContent id="advanced">
+            <p>Not implemented yet!</p>
+          </TabContent>
+          // <div>
+          //   <div className="tabcontent" id="advanced">
+          //     <div className={styles.filterContainer}>
+          //       <label for="advancedInput">Advanced Filter:</label>
+          //       <input type="text" id="advancedInput" onkeyup="filterByAdvanced()"
+          //         placeholder="filter by name, language, stars, etc."></input>
+          //     </div>
+          //   </div>
+          // </div>
+        }
       </div>
     </div>
   );

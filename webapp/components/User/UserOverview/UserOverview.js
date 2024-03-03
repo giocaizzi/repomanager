@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 
 export default function UserOverview({ name, login, avatar_url }) {
     return (
-        <div class={styles.overview}>
+        <div className={styles.overview}>
             <Avatar avatar_url={avatar_url} />
-            <div class={styles.userinfo}>
+            <div className={styles.userinfo}>
                 <h2>{login}</h2>
                 <p>
                     This is the repository manager of <em>{name}</em>, aka <b>{login}</b>.

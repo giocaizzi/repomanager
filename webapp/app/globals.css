@@ -9,6 +9,7 @@
   --primary-color-dark: #1c6a8c;
   --secondary-color: #ba8500;
   --text-color: #000000;
+  --text-color-opp : #ffffff;
 }
 
 /* @media (prefers-color-scheme: dark) {
